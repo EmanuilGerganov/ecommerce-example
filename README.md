@@ -1,4 +1,4 @@
-# eccomerce-example
+# ecommerce-example
 
 ## Build Setup
 
