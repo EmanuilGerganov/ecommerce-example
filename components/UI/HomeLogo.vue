@@ -1,16 +1,16 @@
 <template>
   <nuxt-link to="/" class="my-4">
-    <nuxt-img
-      width="85"
-      height="35"
-      src="/LOGO_TERIS_black_LOGO-no-bg.png"
-      title="Терис лого"
-      alt="Лого"
+    <img
+      width="125"
+      height="150"
+      src="/logo-nobg.png"
+      title="Our logo"
+      alt="Company logo"
       format="webp"
       :loading="loading"
       class="mb-3"
     />
-    <span class="spaceing uppercase">билкови тинктури</span>
+    <span class="spaceing uppercase"> Company slogan</span>
   </nuxt-link>
 </template>
 <script>
@@ -19,10 +19,10 @@ export default {
     loading: {
       type: String,
       required: false,
-      default: 'lazy',
+      default: "lazy",
     },
   },
-}
+};
 </script>
 <style>
 span.spaceing {

@@ -1,6 +1,8 @@
 <template>
   <div class="main-navigation">
-    <div class="z-30 navbar bg-white/70 shadow-md fixed top-0 h-16 lg:h-24 w-screen myBlur">
+    <div
+      class="z-30 navbar bg-white/70 shadow-md fixed top-0 h-16 lg:h-24 w-screen myBlur"
+    >
       <div
         class="px-3 flex justify-between items-center lg:max-w-[1570px] w-full mx-auto whitespace-nowrap"
       >
@@ -27,16 +29,15 @@
             </svg>
           </button>
           <nuxt-link to="/" class="my-2">
-            <nuxt-img
+            <img
               data-cy="nav-logo"
-              format="avif"
-              preload
-              width="85"
-              height="35"
+              width="140"
+              height="70"
               loading="eager"
               title="ТЕРИС ЛОГО"
               alt="Лого"
-              src="/LOGO_TERIS_black_PNG2.webp"
+              src="/logo4.png"
+              class="h-[64px] sm:h-auto"
             />
           </nuxt-link>
         </div>
@@ -45,25 +46,25 @@
           class="hidden text-xl gap-4 uppercase font-semibold lg:grid navigation"
         >
           <li>
-            <nuxt-link to="/" class="li-nuxt-link"> НАЧАЛО </nuxt-link>
+            <nuxt-link to="/" class="li-nuxt-link"> HOME </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/produkti/" class="li-nuxt-link"> ПРОДУКТИ </nuxt-link>
+            <nuxt-link to="/products/" class="li-nuxt-link">
+              PRODUCTS
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/kategorii/" class="li-nuxt-link"> КАТЕГОРИИ </nuxt-link>
+            <nuxt-link to="/about/" class="li-nuxt-link">
+              ABOUT
+            </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/za-nas/" class="li-nuxt-link"> ЗА НАС </nuxt-link>
+            <nuxt-link to="/blog/" class="li-nuxt-link"> BLOG </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/blog/" class="li-nuxt-link"> БЛОГ </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/partniori/" class="li-nuxt-link"> Партньори </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link to="/kontakti/" class="li-nuxt-link"> КОНТАКТИ </nuxt-link>
+            <nuxt-link to="/contacts/" class="li-nuxt-link">
+              CONTACTS
+            </nuxt-link>
           </li>
         </ul>
         <div class="flex gap-1">
@@ -85,31 +86,18 @@
 
           <a
             href="tel:0899919725"
-            aria-label="Обади ни се"
+            aria-label="Call us"
             role="button"
             class="nav-icon h-7 w-7 flex items-center justify-center"
           >
-            <!-- <PhoneIcon data-cy="nav-phone" /> -->
-            <!-- <nuxt-img
-            class="nav-icon h-10 w-10"
-            @click="$fb.track('Contact', { content_name: 'Обаждане на клиент през менюто' })"
-          >
-            <nuxt-img
-              data-cy="nav-phone"
-
-              preload
-              format="webp"
-              loading="eager"
-              class=""
-              alt="Телефон"
-              title="Обади ни се"
-              width="24"
-              height="24"
-              src="/svg/phone.svg"
-            /> -->
+            <PhoneOutline />
           </a>
-          <nuxt-link to="/cart/" class="indicator nav-icon mr-2" aria-label="Виж количка">
-            <!-- <ShoppingCart data-cy="nav-cart" /> -->
+          <nuxt-link
+            to="/cart/"
+            class="indicator nav-icon mr-2"
+            aria-label="View cart"
+          >
+            <CartOutline />
             <div class="indicator-item bg-bilkov-prime text-white rounded-full">
               <span class="text-sm">{{ totalQuantity || 0 }}</span>
             </div>
@@ -122,14 +110,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-// import PhoneIcon from '~icons/feather/phone-call'
-// import ShoppingCart from '~icons/feather/shopping-cart'
+import PhoneOutline from "~icons/mdi/phone-outline";
+import CartOutline from "~icons/mdi/cart-outline";
+import { mapState } from "vuex";
 
 export default {
   components: {
-    // ShoppingCart,
-    // PhoneIcon,
+    PhoneOutline,
+    CartOutline,
   },
   computed: {
     ...mapState({
@@ -138,23 +126,12 @@ export default {
       totalQuantity: (state) => state.cart.totalQuantity,
     }),
   },
-  // watch: {
-  //   totalQuantity(newVal, oldVal) {
-  //     if (newVal > 1) {
-  //       const discount = 0.05
-  //       this.$store.commit('cart/SET_TOTAL_PRICE_DISCOUNT', discount)
-  //     } else {
-  //       // const discount = 1.05
-  //       this.$store.commit('cart/SET_TOTAL_PRICE_DISCOUNT', false)
-  //     }
-  //   },
-  // },
   methods: {
     toggleSidebar(value) {
-      this.$store.commit('TOGGLE_NAVBAR', value)
+      this.$store.commit("TOGGLE_NAVBAR", value);
     },
   },
-}
+};
 </script>
 <style>
 .navigation {

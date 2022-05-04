@@ -1,7 +1,6 @@
 <template>
   <div class="p-2 mx-auto text-center sm:p-10">
-    <nuxt-img
-      format="webp"
+    <img
       loading="lazy"
       :width="w"
       height="96"

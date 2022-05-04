@@ -20,7 +20,7 @@
         />
       </div>
       <!-- <input class="input" :disabled="voucherApplied" v-model="voucher" /> -->
-      <button data-cy="promoCode" class="btn" @click.stop="addPromoCode">Добави Промо Код</button>
+      <button data-cy="promoCode" class="btn" @click.stop="addPromoCode">ADD PROMO CODE</button>
     </div>
     <div v-if="Object.keys(voucherErrors).length" class="flex items-center justify-center">
       <div v-for="err in voucherErrors" :key="err.field">

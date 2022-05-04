@@ -3,7 +3,7 @@
     <ol class="pl-3 list-none" vocab="https://schema.org/" typeof="BreadcrumbList">
       <li property="itemListElement" class="inline" typeof="ListItem">
         <nuxt-link property="item" typeof="WebPage" to="/">
-          <span property="name">Начало</span>
+          <span property="name">Home</span>
         </nuxt-link>
         <meta property="position" content="1" />
       </li>

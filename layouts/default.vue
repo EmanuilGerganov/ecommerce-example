@@ -1,8 +1,6 @@
 <template>
   <div>
     <a class="skip-link" tabindex="0" href="#main">Към главното съдържание</a>
-    <h1>LAYOUT</h1>
-    <Nuxt />
     <div class="default-layout h-screen">
       <NavigationMyNav class="layout-nav" />
       <div class="layout-main">
@@ -28,7 +26,7 @@
               <nuxt-link to="/faq/">Често задавани въпроси</nuxt-link>
             </div>
             <div class="h-12 flex justify-center items-center normal-case">
-              ©2022 Всички права запазени.
+              ©2022 All Rights Reserved.
             </div>
           </div>
         </footer>
@@ -79,14 +77,14 @@ export default {
       this.$store.commit("TOGGLE_NAVBAR", false);
     },
   },
-//   mounted() {
-//     const items =
-//       localStorage.getItem("cart") === null
-//         ? "{}"
-//         : localStorage.getItem("cart");
-//     const cartItems = JSON.parse(items);
-//     this.$store.commit("cart/SET_CART", cartItems);
-//   },
+  //   mounted() {
+  //     const items =
+  //       localStorage.getItem("cart") === null
+  //         ? "{}"
+  //         : localStorage.getItem("cart");
+  //     const cartItems = JSON.parse(items);
+  //     this.$store.commit("cart/SET_CART", cartItems);
+  //   },
   methods: {
     scrollToTop() {
       window.scroll({ top: 0, left: 0, behavior: "smooth" });
@@ -216,6 +214,15 @@ a.li-nuxt-link {
 .layout-main {
   grid-area: main;
   overflow-x: visible;
+}
+
+#main {
+  margin-bottom: 5rem;
+  width: 100%;
+  max-width: 1570px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.75rem;
 }
 
 .primary-button {

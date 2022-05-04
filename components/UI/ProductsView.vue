@@ -6,10 +6,10 @@
         v-model="search"
         class="text-bold border-b-2 border-solid border-colors-green-600"
         type="text"
-        placeholder="Намери продукт"
+        placeholder="Find a product"
       />
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <template v-if="$fetchState.pending">
         <ProductsSkeleton v-for="n in 8" :key="n" />
       </template>
@@ -53,7 +53,7 @@ export default defineComponent({
       store.commit('TOGGLE_NAVBAR', false)
     })
 
-    store.commit('SET_BREADCRUMBS', [{ title: 'ПРОДУКТИ', to: '/produkti' }])
+    store.commit('SET_BREADCRUMBS', [{ title: 'PRODUCTS', to: '/products/' }])
     return {
       input,
       products,

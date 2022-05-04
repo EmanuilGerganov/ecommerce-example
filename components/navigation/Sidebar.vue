@@ -10,12 +10,12 @@
       class="transform top-0 left-0 bg-white fixed h-full overflow-auto ease-in-out z-30 -translate-x-100% min-w-[70%] max-w-80%"
     >
       <UIHomeLogo size="small" loading="eager" class="flex flex-col items-center mb-10" />
-      <UIHeaderLink icon="home" to="/"> Начало </UIHeaderLink>
-      <UIHeaderLink icon="view-grid" to="/produkti/"> Продукти </UIHeaderLink>
-      <UIHeaderLink icon="account-group" to="/za-nas/"> За нас </UIHeaderLink>
-      <UIHeaderLink icon="book-open-page-variant" to="/blog/"> Блог </UIHeaderLink>
+      <UIHeaderLink icon="home" to="/"> Home </UIHeaderLink>
+      <UIHeaderLink icon="view-grid" to="/products/"> Products </UIHeaderLink>
+      <UIHeaderLink icon="account-group" to="/about/"> About us </UIHeaderLink>
+      <UIHeaderLink icon="book-open-page-variant" to="/blog/"> Blog </UIHeaderLink>
       <UIHeaderLink icon="hand-heart" to="/partniori/"> Партньори </UIHeaderLink>
-      <UIHeaderLink icon="contacts" to="/kontakti/"> Контакти </UIHeaderLink>
+      <UIHeaderLink icon="contacts" to="/contacts/"> Contacts </UIHeaderLink>
     </aside>
   </div>
 </template>
