@@ -54,9 +54,7 @@
             </nuxt-link>
           </li>
           <li>
-            <nuxt-link to="/about/" class="li-nuxt-link">
-              ABOUT
-            </nuxt-link>
+            <nuxt-link to="/about/" class="li-nuxt-link"> ABOUT </nuxt-link>
           </li>
           <li>
             <nuxt-link to="/blog/" class="li-nuxt-link"> BLOG </nuxt-link>
@@ -85,7 +83,7 @@
           </nuxt-link> -->
 
           <a
-            href="tel:0899919725"
+            href="tel:0888777999"
             aria-label="Call us"
             role="button"
             class="nav-icon h-7 w-7 flex items-center justify-center"

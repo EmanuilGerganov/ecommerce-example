@@ -2,7 +2,7 @@
   <article data-cy="article" class="mx-auto w-4/5">
     <div class="">
       <div class="mb-3">
-        <nuxt-link :to="`/blog/${article.slug}/`">
+        <nuxt-link :to="`/blog/${articleUrl}/`">
           <img
             width="500"
             height="333"
@@ -40,7 +40,7 @@
         :to="`/blog/${article.slug}/`"
         class="bg-bilkov-prime hover:bg-bilkov-cviat-hover p-3 text-white font-medium"
       >
-       Read more
+        Read more
       </nuxt-link>
     </div>
   </article>
@@ -65,22 +65,11 @@ export default {
     },
   },
   computed: {
-    articleImage() {
-      return this.article.image.url
-        ? this.article.image.url
-        : this.article.image;
-    },
-    articlePublishedDate() {
-      if (!this.article.published_at) return "";
-      return this.article.published_at.split(".")[0].split("T").join(" ");
+    articleUrl() {
+      return this.article.title.toLowerCase().replaceAll(" ", "-");
     },
   },
-  // data() {
-  //   return {
-  //     time: 0,
-  //   }
-  // },
-  // computed: {
+   // computed: {
   // articlePublishedDate() {
   //   if (!this.article.publish_at) return ''
   //   return this.article.publish_at.slice(0, 10)

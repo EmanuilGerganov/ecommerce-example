@@ -1,5 +1,4 @@
 export const state = () => ({
-  discountIsSeen: true,
   navbar: false,
   modal: false,
   // for whole page
@@ -27,10 +26,6 @@ export const state = () => ({
 });
 
 export const mutations = {
-  SET_DISCOUNT_MODAL(state, payload) {
-    state.discountIsSeen = payload;
-  },
-
   TOGGLE_NAVBAR(state, payload) {
     if (payload) state.navbar = payload;
     else state.navbar = false;
@@ -81,81 +76,6 @@ export const mutations = {
     state.sameCategoryProducts = payload;
   },
 };
-
-const BREADCRUMBS_BY_SLUG = {
-  profil: [{ title: "ПРОФИЛ", to: "/profil/" }],
-  products: [{ title: "PRODUCTS", to: "/products/" }],
-  blog: [{ title: "BLOG", to: "/blog/" }],
-  cart: [{ title: "CART", to: "/cart/" }],
-  gdpr: [{ title: "ПРАВА НА GDPR ЗА ЗАЩИТА НА ДАННИТЕ", to: "/gdpr/" }],
-  faq: [{ title: "ЧЕСТО ЗАДАВАНИ ВЪПРОСИ", to: "/faq/" }],
-  kategorii: [{ title: "КАТЕГОРИИ", to: "/kategorii/" }],
-  contacts: [{ title: "CONTACTS", to: "/contacts/" }],
-  about: [{ title: "ABOUT", to: "/about/" }],
-  partniori: [{ title: "ПАРТНЬОРИ", to: "/partniori/" }],
-  vpisvane: [{ title: "ВПИСВАНЕ", to: "/vpisvane/" }],
-  "reset-password": [{ title: "ВЪЗТАЗНОВЯВАНЕ", to: "/reset-password/" }],
-  "reset-password-new-password": [
-    { title: "ВЪЗТАЗНОВЯВАНЕ", to: "/reset-password/" },
-    { title: "НОВА ПАРОЛА", to: "/reset-password/new-password/" },
-  ],
-  "cart-checkout": [
-    { title: "CART", to: "/cart/" },
-    { title: "ORDER", to: "/cart/checkout/" },
-  ],
-};
-
-// const handlers = {
-//   "products-slug": async ({ dispatch, state }, context) => {
-//     await dispatch("actFetchCurrentProduct", context.params.slug);
-//     await dispatch(
-//       "actFetchSameCategoryProducts",
-//       state.currentProduct.collections[0].id
-//     );
-//   },
-//   "blog-slug": async ({ dispatch }, context) => {
-//     await dispatch("actFetchCurrentArticle", context.params.slug);
-
-//     // await dispatch('actFetchArticles')
-//     // const current = state.articles.find((article) => article.slug == context.params.slug)
-//     // await commit('SET_BREADCRUMBS', [
-//     //   { title: 'БЛОГ', to: '/blog' },
-//     //   { title: current.title, to: '/blog/' + current.slug },
-//     // ])
-//   },
-//   "kategorii-slug": async ({ dispatch, commit, state }, context) => {
-//     await dispatch("actFetchCategoriesNames");
-//     const currentCategory = state.categoriesNames.find(
-//       (cat) => cat.node.slug === context.params.slug
-//     );
-//     commit("SET_CURRENT_CATEGORY", currentCategory);
-//     commit("SET_BREADCRUMBS", [
-//       { title: "КАТЕГОРИИ", to: "/kategorii/" },
-//       {
-//         title: currentCategory.node.name,
-//         to: `/kategorii/${currentCategory.node.slug}/`,
-//       },
-//     ]);
-//     await dispatch(
-//       "actFetchSameCategoryProducts",
-//       state.currentCategory.node.id
-//     );
-//   },
-//   index: async ({ dispatch }) => {
-//     dispatch("actFetchBestSelling");
-//     dispatch("actFetchHomeCategories");
-//   },
-//   products: async ({ dispatch }) => {
-//     await dispatch("actFetchProducts");
-//   },
-//   blog: async ({ dispatch }) => {
-//     await dispatch("actFetchArticles");
-//   },
-//   profil: async ({ commit }, context) => {
-//     commit("SET_BREADCRUMBS", BREADCRUMBS_BY_SLUG[context.route.name]);
-//   },
-// };
-
 export const actions = {
   // const channel = "default-customer";
   async nuxtServerInit(storeContext, context) {
@@ -168,17 +88,11 @@ export const actions = {
     // context.cart = payload
     // commit('cart/SET_CART_FROM_COOKIE', payload)
     // await dispatch('actSetCartFromCookie', payload)
-
-    if (BREADCRUMBS_BY_SLUG[context.route.name])
-    console.log('SET_BREADCRUMBS')
-      commit("SET_BREADCRUMBS", BREADCRUMBS_BY_SLUG[context.route.name]);
-
-    // if (handlers[context.route.name] !== undefined)
-    // console.log('handlers')
-    //   await handlers[context.route.name](storeContext, context);
   },
   async actFetchProducts({ commit }) {
-    const productsResponse = await fetch("https://api.storerestapi.com/products");
+    const productsResponse = await fetch(
+      "https://api.storerestapi.com/products"
+    );
     const products = await productsResponse.json();
     commit("SET_PRODS", products.data);
   },
@@ -254,35 +168,6 @@ export const actions = {
     );
 
     await commit("SET_HOME_CATEGORIES", categoriesResponse.collections.edges);
-  },
-  async actFetchCategoriesInfo({ commit }) {
-    const query = gql`
-      query ($channel: String!) {
-        collections(first: 100, channel: $channel) {
-          edges {
-            node {
-              id
-              name
-              slug
-              backgroundImage {
-                url
-              }
-              metadata {
-                key
-                value
-              }
-            }
-          }
-        }
-      }
-    `;
-    const variables = { channel: "default-customer" };
-    const categoriesResponse = await this.$graphql.default.request(
-      query,
-      variables
-    );
-
-    await commit("SET_CATEGORIES_INFO", categoriesResponse.collections.edges);
   },
   async actFetchCurrentProduct({ commit }, payload) {
     const query = gql`

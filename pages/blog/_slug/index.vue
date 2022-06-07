@@ -38,85 +38,48 @@ export default {
   async fetch() {
     await this.$store.dispatch('actFetchCurrentArticle', this.$route.params.slug)
   },
-  head() {
-    if (!this.article) return false
-    else {
-      const title = this.replaceAll(this.article.title, '"', "'")
-      const description = this.replaceAll(this.article.description, '"', "'")
-      const ogImageUrl = this.$img('https://admin.bilkovitinkturi.bg' + this.article?.image?.url)
-
-      return {
-        title: title,
-        meta: [
-          {
-            hid: 'title',
-            name: 'title',
-            content: title,
-          },
-          {
-            hid: 'og:title',
-            name: 'og:title',
-            content: title,
-          },
-          {
-            hid: 'description',
-            name: 'description',
-            content: description,
-          },
-          {
-            hid: 'og:description',
-            name: 'og:description',
-            content: description,
-          },
-          {
-            hid: 'og:image',
-            name: 'og:image',
-            content: ogImageUrl,
-          },
-          {
-            hid: 'og:type',
-            name: 'og:type',
-            content: 'article',
-          },
-        ],
-      }
-    }
-  },
+  // head() {
+  //   if (!this.article) return false
+  //   else {
+  //     return {
+  //       title: title,
+  //       meta: [
+  //         {
+  //           hid: 'title',
+  //           name: 'title',
+  //           content: title,
+  //         },
+  //         {
+  //           hid: 'og:title',
+  //           name: 'og:title',
+  //           content: title,
+  //         },
+  //         {
+  //           hid: 'description',
+  //           name: 'description',
+  //           content: description,
+  //         },
+  //         {
+  //           hid: 'og:description',
+  //           name: 'og:description',
+  //           content: description,
+  //         },
+  //         {
+  //           hid: 'og:image',
+  //           name: 'og:image',
+  //           content: ogImageUrl,
+  //         },
+  //         {
+  //           hid: 'og:type',
+  //           name: 'og:type',
+  //           content: 'article',
+  //         },
+  //       ],
+  //     }
+  //   }
+  // },
   computed: {
     ...mapState({ article: 'currentArticle' }),
-    articleContent() {
-      let articleBody = this.article.content.replace(
-        /\/uploads/g,
-        `https://admin.bilkovitinkturi.bg/uploads`
-      )
-      const oembedStart = '<oembed url="'
-      let oembedEnd = '&amp;feature=youtu.be"></oembed>'
-
-      const oEmSrcIndexStart =
-        articleBody.indexOf('<oembed url="https://www.youtube.com/watch?v=') +
-        '<oembed url="https://www.youtube.com/watch?v='.length
-
-      let oEmSrcIndexEnd = articleBody.indexOf(oembedEnd, oEmSrcIndexStart)
-      if (oEmSrcIndexEnd === -1) {
-        oembedEnd = '></oembed>'
-        oEmSrcIndexEnd = articleBody.indexOf(oembedEnd, oEmSrcIndexStart)
-      }
-
-      const src = articleBody.substring(oEmSrcIndexStart, oEmSrcIndexEnd)
-
-      articleBody = articleBody.replace(
-        oembedStart,
-        "<iframe width=560 height=315 loading='lazy'  allowfullscreen='' frameborder='0' src=\"https://www.youtube.com/embed/" +
-          src +
-          '"' +
-          '></iframe>'
-      )
-      articleBody = articleBody.replace(oembedEnd, '')
-      articleBody = articleBody.replace('https://www.youtube.com/watch?v=' + src, '')
-      articleBody = articleBody.replace('style="text-align:justify;"', '')
-
-      return articleBody
-    },
   },
   jsonld() {
     const blogPost = this.article

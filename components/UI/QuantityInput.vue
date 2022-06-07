@@ -65,7 +65,7 @@ export default {
         items: [
           {
             id: product.node.sku,
-            name: product.name,
+            name: product.title,
             list_name: 'Search Results',
             category: 'Тинктури',
             quantity: 1,
@@ -90,7 +90,7 @@ export default {
         items: [
           {
             id: this.product.node.sku,
-            name: this.product.name,
+            name: this.product.title,
             category: 'Тинктури',
             quantity: 1,
             price: this.product.node.pricing.priceRangeUndiscounted.start.gross.amount,

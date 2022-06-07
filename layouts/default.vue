@@ -2,7 +2,7 @@
   <div>
     <a class="skip-link" tabindex="0" href="#main">Към главното съдържание</a>
     <div class="default-layout h-screen">
-      <NavigationMyNav class="layout-nav" />
+      <NavigationNavbar class="layout-nav" />
       <div class="layout-main">
         <NavigationBCrumbs
           v-if="$route.path !== '/'"
@@ -17,13 +17,13 @@
               class="flex flex-wrap uppercase text-center py-3 sm:py-4 mx-auto justify-center items-center font-semibold gap-4"
             >
               <nuxt-link to="/pravila-i-usloviya/"
-                >Правила и условия за ползване</nuxt-link
+                >HOW TO USE</nuxt-link
               >
               <nuxt-link to="/pravila-za-poveritelnost/"
-                >Правила за поверителност</nuxt-link
+                >SECURITY</nuxt-link
               >
-              <nuxt-link to="/gdpr/">GDPR защита на данни</nuxt-link>
-              <nuxt-link to="/faq/">Често задавани въпроси</nuxt-link>
+              <nuxt-link to="/gdpr/">GDPR</nuxt-link>
+              <nuxt-link to="/faq/">FAQ</nuxt-link>
             </div>
             <div class="h-12 flex justify-center items-center normal-case">
               ©2022 All Rights Reserved.
