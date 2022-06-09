@@ -58,7 +58,7 @@
             >
               <button
                 class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
-                @click="() => decrementProductCount()"
+                @click="() => removeCount()"
               >
                 -
               </button>
@@ -69,7 +69,7 @@
               </div>
               <button
                 class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
-                @click="() => incrementProductCount()"
+                @click="() => addCount()"
               >
                 +
               </button>
@@ -110,7 +110,7 @@
             v-for="(item, index) in questions"
             :key="item"
             tabindex="0"
-            class="items-center max-w-5xl border collapse collapse-open rounded-box border-base-300 collapse-arrow"
+            class="collapse collapse-arrow items-center max-w-5xl border rounded-box border-base-300"
           >
             <div class="text-xl font-semibold collapse-title">
               {{ item }}
@@ -121,7 +121,7 @@
           </div>
         </div>
       </section>
-      
+
       <section id="related" class="my-20">
         <h2 class="uppercase heading">Related products</h2>
         <div class="md:flex flex-row">
@@ -133,7 +133,7 @@
           />
         </div>
       </section>
-        <LazyStamps id="stamps" class="w-full bg-section-blue py-5" />
+      <LazyStamps id="stamps" class="w-full bg-section-blue py-5" />
       <!-- <section
         v-if="productTabs && sameCategoryProducts && !$fetchState.pending"
         id="related"
@@ -163,6 +163,22 @@ export default {
   }),
   async fetch() {
     await this.$store.dispatch("actFetchProducts");
+  },
+  methods: {
+    addToCart() {
+      const product = {
+        name: this.product.title,
+        price: this.product.price,
+        quantity: this.productCount,
+      };
+      this.$store.commit("cart/ADD_PRODUCT", product);
+    },
+    removeCount() {
+      this.productCount--;
+    },
+    addCount() {
+      this.productCount++;
+    },
   },
   computed: {
     ...mapState({
