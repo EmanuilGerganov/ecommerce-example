@@ -1,10 +1,10 @@
 <template>
-  <main id="main">
+  <main>
     {{ product }}
-    <div class="product-page-layout">
-      <header id="head">
+    <div id="product-page-layout">
+      <header id="product">
         <div
-          class="grid my-5 mx-auto max-w-[1570px] text-lg font-semibold uppercase sm:text-base md:grid-cols-2 md:items-center md:text-left"
+          class="grid my-5 mx-auto text-lg font-semibold uppercase sm:text-base md:grid-cols-2 md:items-center md:text-left"
         >
           <template v-if="$fetchState.pending">
             <content-placeholders
@@ -40,9 +40,7 @@
               </template>
             </h1>
             <UIStarRating v-model="rating" />
-            <div class="font-normal text-md">
-              Code: 00000001
-            </div>
+            <div class="font-normal text-md">Code: 00000001</div>
             <div class="font-medium text-md">
               Single Price:
               {{
@@ -77,7 +75,7 @@
               </button>
             </div>
 
-            <div class="text-lg">TOTAL PRICE:{{ priceTotalMessage }}</div>
+            <!-- <div class="text-lg">TOTAL PRICE:{{ priceTotalMessage }}</div> -->
             <button
               data-cy="add"
               class="font-bold text-white rounded-full border-0 btn bg-bilkov-prime hover:bg-bilkov-cviat-hover"
@@ -92,52 +90,57 @@
       <section id="info" class="py-5 w-full bg-section-blue">
         <UIProductTabs />
       </section>
-      <section id="stamps">
-        <Stamps class="py-5" />
-      </section>
-      <section
-        v-if="productTabs && productTabs[0]"
-        id="questions"
-        class="w-full bg-section-blue"
-      >
+      <section id="faq" class="w-full">
         <h2 class="heading">FREQUENTLY ASKED QUESTIONS</h2>
-        <div
-          v-for="question in questions"
-          :key="question.id + product.title"
-          class="prose sm:hidden prose-sm"
+        <!-- Questions and aswers always opened -->
+
+        <!-- <div
+          v-for="(item, index) in questions"
+          :key="item"
+          class="prose prose-sm"
         >
           <h3 class="px-2">
-            {{ question.question }}
+            {{ item }}
           </h3>
-          <div class="px-3" v-html="question.answer" />
-        </div>
+          <div class="px-3">{{ item }} {{ answerExample }}</div>
+        </div> -->
 
         <div class="grid gap-5 justify-center py-10">
           <div
-            v-for="question in questions[1].questions"
-            :key="question.id"
+            v-for="(item, index) in questions"
+            :key="item"
             tabindex="0"
-            class="hidden items-center max-w-5xl border sm:block collapse rounded-box border-base-300 collapse-arrow"
+            class="items-center max-w-5xl border collapse collapse-open rounded-box border-base-300 collapse-arrow"
           >
             <div class="text-xl font-semibold collapse-title">
-              {{ question.question }}
+              {{ item }}
             </div>
-            <div
-              class="flex-col prose prose-lg collapse-content md:prose-xl"
-              v-html="question.answer"
-            />
+            <div class="flex-col prose prose-lg collapse-content md:prose-xl">
+              {{ answerExample }}
+            </div>
           </div>
         </div>
       </section>
+      
+      <section id="related" class="my-20">
+        <h2 class="uppercase heading">Related products</h2>
+        <div class="md:flex flex-row">
+          <ProductsCard
+            v-for="(n, index) in 3"
+            :key="index"
+            class="sm:basis-1/3"
+            :product="products[index]"
+          />
+        </div>
+      </section>
+        <LazyStamps id="stamps" class="w-full bg-section-blue py-5" />
       <!-- <section
         v-if="productTabs && sameCategoryProducts && !$fetchState.pending"
         id="related"
         class="my-20"
       >
         <h2 class="uppercase heading">Related products</h2>
-        <LzyComponent>
-          <ProductsCarousel :products="sameCategoryProducts" />
-        </LzyComponent>
+     
       </section> -->
     </div>
   </main>
@@ -149,6 +152,14 @@ export default {
   data: () => ({
     productCount: 1,
     rating: 5,
+    questions: [
+      "FIRST EXAMPLE QUESTION",
+      "SECOND EXAMPLE QUESTION",
+      "THIRD EXAMPLE QUESTION",
+      "FOURTH EXAMPLE QUESTION",
+    ],
+    answerExample:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi perspiciatis maxime eligendi error corporis aperiam repudiandae ex eveniet, numquam quisquam distinctio nesciunt facilis possimus enim repellendus tempore eaque facere.",
   }),
   async fetch() {
     await this.$store.dispatch("actFetchProducts");
@@ -162,9 +173,37 @@ export default {
         (product) => product.slug == this.$route.params.slug
       );
     },
-    questions() {
-      return "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi perspiciatis maxime eligendi error corporis aperiam repudiandae ex eveniet, numquam quisquam distinctio nesciunt facilis possimus enim repellendus tempore eaque facere.";
-    },
   },
 };
 </script>
+
+<style scoped>
+#product-page-layout {
+  display: grid;
+  grid-template-areas:
+    ". product ."
+    "info info info"
+    "faq faq faq"
+    "stamps stamps stamps"
+    "related related related";
+  grid-template-columns: 1fr 90% 1fr;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+#product {
+  grid-area: product;
+}
+#info {
+  grid-area: info;
+}
+#faq {
+  grid-area: faq;
+}
+#related {
+  grid-area: related;
+}
+#stamps {
+  grid-area: stamps;
+}
+</style>
