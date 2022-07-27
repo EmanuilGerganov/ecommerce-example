@@ -4,7 +4,6 @@
          "id":1,
          "title":"Product One Example",
          "slug":"first-product",
-         "description":"this is description 1",
          "price":5
       },
       {
