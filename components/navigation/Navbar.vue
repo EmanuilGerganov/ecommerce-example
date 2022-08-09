@@ -96,8 +96,8 @@
             aria-label="View cart"
           >
             <CartOutline />
-            <div class="indicator-item bg-bilkov-prime text-white rounded-full">
-              <span class="text-sm">{{ totalQuantity || 0 }}</span>
+            <div class="indicator-item bg-herb-prime text-white rounded-full">
+              <span class="text-sm">{{ totalQuantity }}</span>
             </div>
           </nuxt-link>
         </div>
@@ -150,7 +150,7 @@ export default {
 .nav-icon:focus i {
   @apply text-white;
 }
-.indicator-item.bg-bilkov-prime.text-white.rounded-full {
+.indicator-item.bg-herb-prime.text-white.rounded-full {
   border: 1px solid #408000;
   top: 5px;
   width: 22px;

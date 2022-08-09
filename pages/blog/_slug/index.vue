@@ -22,21 +22,21 @@
     <template v-else>
       <header>
         <h1 class="heading">
-          {{ article.title }}
+          {{ slug }}
         </h1>
       </header>
-      <article class="p-2 prose max-w-none text-left" v-html="articleContent" />
+      <article class="p-2 prose max-w-none text-left">
+        {{ article.body }}
+      </article>
     </template>
   </main>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  name: 'BlogArticle',
+  name: "BlogArticle",
   async fetch() {
-    await this.$store.dispatch('actFetchCurrentArticle', this.$route.params.slug)
+    await this.$store.dispatch("actFetchArticles");
   },
   // head() {
   //   if (!this.article) return false
@@ -79,43 +79,54 @@ export default {
   //   }
   // },
   computed: {
-    ...mapState({ article: 'currentArticle' }),
+    slug() {
+      // no slug - fix it after going back from /blog/article
+      console.log(this.$route.params.slug);
+      return this.$route.params.slug.replaceAll("-", " ");
+    },
+    article() {
+      const article = this.$store.state.articles.find(
+        (article) => article.title.toLowerCase() == this.slug
+      );
+      return article;
+    },
   },
   jsonld() {
-    const blogPost = this.article
+    const blogPost = this.article;
     return {
-      '@context': 'http://schema.org',
-      '@graph': [
+      "@context": "http://schema.org",
+      "@graph": [
         {
-          '@type': 'BlogPosting',
+          "@type": "BlogPosting",
           headline: blogPost.title,
           alternativeHeadline: blogPost.description,
           image: blogPost.image?.url,
-          genre: 'билки билкови тинктури хомеопатия билколечение алтернативна медицина',
-          keywords: 'билки здраве билколечение билкови тинктури',
+          genre:
+            "билки билкови тинктури хомеопатия билколечение алтернативна медицина",
+          keywords: "билки здраве билколечение билкови тинктури",
           // wordcount: words.length,
           publisher: {
-            '@type': 'Organization',
-            name: 'bilkovitinkturi.bg',
-            url: 'https://bilkovitinkturi.bg/',
+            "@type": "Organization",
+            name: "herbitinkturi.bg",
+            url: "https://herbitinkturi.bg/",
           },
           author: {
-            '@type': 'Person',
-            name: 'bilkovitinkturi.bg',
-            url: 'https://bilkovitinkturi.bg/',
+            "@type": "Person",
+            name: "herbitinkturi.bg",
+            url: "https://herbitinkturi.bg/",
           },
-          url: 'https://bilkovitinkturi.bg/blog/' + blogPost.slug,
+          url: "https://herbitinkturi.bg/blog/" + blogPost.slug,
           datePublished: blogPost.publishedAt,
           dateCreated: blogPost.created_at,
           dateModified: blogPost.updated_at,
           description: blogPost.description,
-          inLanguage: 'bg-Cyrl-Bulgaria',
+          inLanguage: "bg-Cyrl-Bulgaria",
           isFamilyFriendly: true,
           copyrightYear: new Date().getFullYear(),
           mainEntityOfPage: true,
         },
       ],
-    }
+    };
   },
-}
+};
 </script>

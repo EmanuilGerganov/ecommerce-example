@@ -1,55 +1,51 @@
 <template>
   <main id="main">
     <header>
-      <h1 class="heading">PRODUCTS HEADING</h1>
+      <h1 class="heading">Products heading</h1>
     </header>
-    <UIProductsView :$fetch-state="$fetchState" />
+    <!-- <UIProductsView :$fetch-state="$fetchState" /> -->
+    <UIProductsView />
   </main>
 </template>
-<script defer async>
-import { defineComponent } from '@nuxtjs/composition-api'
-
-export default defineComponent({
-  name: 'ProduktiSlug',
+<script>
+export default {
   data() {
     return {
-      search: '',
-    }
-  },
-  async fetch() {
-    await this.$store.dispatch('actFetchProducts')
+      search: "",
+    };
   },
   head: {
-    title: '【 Онлайн магазини за билкови тинктури 】 — bilkovitinkturi.bg | Билкови тинктури',
+    title:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea —  example.com",
     meta: [
       {
-        hid: 'description',
-        name: 'description',
+        hid: "description",
+        name: "description",
         content:
-          '☛ Разнообразие от【 билкови тинктури 】✔ 100% гаранция за качество и произход ✔ 100% натуралени продукти ❰❰ bilkovitinkturi.bg ❱❱ Поръчай сега на ☎ 0899919725 ',
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea, asperiores rerum eveniet quisquam aliquam deserunt vitae totam vel odio quas, doloremque nemo commodi!",
       },
       {
-        hid: 'og:type',
-        name: 'og:type',
-        content: 'website',
+        hid: "og:type",
+        name: "og:type",
+        content: "website",
       },
       {
-        hid: 'og:title',
-        name: 'og:title',
-        content: '【 Онлайн магазини за билкови тинктури 】 — bilkovitinkturi.bg',
+        hid: "og:title",
+        name: "og:title",
+        content: "【Lorem ipsum dolor sit amet — example.com",
       },
       {
-        hid: 'og:description',
-        name: 'og:description',
+        hid: "og:description",
+        name: "og:description",
         content:
-          ' ☛ Разнообразие от【 билкови тинктури 】✔ 100% гаранция за качество и произход ✔ 100% натуралени продукти ❰❰ bilkovitinkturi.bg ❱❱ Поръчай сега на ☎ 0899919725',
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea, asperiores rerum eveniet quisquam aliquam deserunt vitae totam vel",
       },
       {
-        hid: 'og:url',
-        name: 'og:url',
-        content: 'https://bilkovitinkturi.bg/produkti',
+        hid: "og:url",
+        name: "og:url",
+        content: "https://example.com/products",
       },
     ],
   },
-})
+};
 </script>

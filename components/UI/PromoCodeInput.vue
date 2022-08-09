@@ -2,12 +2,12 @@
   <div>
     <div v-if="voucherApplied" class="flex items-center justify-center">
       <div class="text-colors-green-500 text-xl font-medium text-center">
-        Вашият промо код
+        You promo code
         <div class="btn btn-primary">
           {{ checkout.voucherCode }}
           <div class="badge ml-2">-10%</div>
         </div>
-        беше приложен успешно!
+        was successfully applied!
       </div>
     </div>
     <div v-else class="flex items-end gap-4">

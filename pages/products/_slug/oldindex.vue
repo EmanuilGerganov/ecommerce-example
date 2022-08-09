@@ -16,7 +16,7 @@
               width="350"
               preload
               class="mx-auto"
-              :src="`images${product.media[0].url.split('https://api.bilkovitinkturi.bg')[1]}`"
+              :src="`images${product.media[0].url.split('https://api.herbitinkturi.bg')[1]}`"
               :title="product.name"
               alt="Снимка на продукт"
               loading="eager"
@@ -45,10 +45,10 @@
             </div>
             <div class="text-lg">Количество</div>
             <div
-              class="self-start rounded-[60px] border-[1px] border-solid btn-group border-bilkov-prime"
+              class="self-start rounded-[60px] border-[1px] border-solid btn-group border-herb-prime"
             >
               <button
-                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
+                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-herb-prime hover:text-white hover:bg-herb-hover"
                 @click="() => decrementProductCount()"
               >
                 -
@@ -57,7 +57,7 @@
                 {{ productCount }}
               </div>
               <button
-                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
+                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-herb-prime hover:text-white hover:bg-herb-hover"
                 @click="() => incrementProductCount()"
               >
                 +
@@ -67,7 +67,7 @@
             <div class="text-lg">ОБЩА ЦЕНА:{{ priceTotalMessage }}</div>
             <button
               data-cy="add"
-              class="font-bold text-white rounded-full border-0 btn bg-bilkov-prime hover:bg-bilkov-cviat-hover"
+              class="font-bold text-white rounded-full border-0 btn bg-herb-prime hover:bg-herb-hover"
               @click="() => addToCart(product)"
             >
               <ShoppingCart class="mr-2 w-7 h-7" />
@@ -176,7 +176,7 @@ export default defineComponent({
           {
             hid: 'og:url',
             name: 'og:url',
-            content: `https://bilkovitinkturi.bg${this.$route.fullPath}`,
+            content: `https://herbitinkturi.bg${this.$route.fullPath}`,
           },
           {
             hid: 'og:image',

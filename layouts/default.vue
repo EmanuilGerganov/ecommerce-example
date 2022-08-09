@@ -12,16 +12,12 @@
         <footer class="layout-footer">
           <FooterNav />
 
-          <div class="bg-bilkov-dark-press text-white">
+          <div class="bg-herb-dark-press text-white">
             <div
               class="flex flex-wrap uppercase text-center py-3 sm:py-4 mx-auto justify-center items-center font-semibold gap-4"
             >
-              <nuxt-link to="/pravila-i-usloviya/"
-                >HOW TO USE</nuxt-link
-              >
-              <nuxt-link to="/pravila-za-poveritelnost/"
-                >SECURITY</nuxt-link
-              >
+              <nuxt-link to="/pravila-i-usloviya/">HOW TO USE</nuxt-link>
+              <nuxt-link to="/pravila-za-poveritelnost/">SECURITY</nuxt-link>
               <nuxt-link to="/gdpr/">GDPR</nuxt-link>
               <nuxt-link to="/faq/">FAQ</nuxt-link>
             </div>
@@ -66,10 +62,10 @@ export default {
       return this.$store.getters.getCartLines;
     },
     imageURL() {
-      return this.$img("https://bilkovitinkturi.bg/og-image.jpg");
+      return this.$img("https://herbitinkturi.bg/og-image.jpg");
     },
     isModalOpen() {
-      return this.$store.state.modal;
+      return this.$store.state.cart.modal;
     },
   },
   watch: {
@@ -77,14 +73,11 @@ export default {
       this.$store.commit("TOGGLE_NAVBAR", false);
     },
   },
-  //   mounted() {
-  //     const items =
-  //       localStorage.getItem("cart") === null
-  //         ? "{}"
-  //         : localStorage.getItem("cart");
-  //     const cartItems = JSON.parse(items);
-  //     this.$store.commit("cart/SET_CART", cartItems);
-  //   },
+  mounted() {
+    const cartItems = localStorage.getItem("cart");
+
+    if (cartItems) this.$store.commit("cart/SET_CART", JSON.parse(cartItems));
+  },
   methods: {
     scrollToTop() {
       window.scroll({ top: 0, left: 0, behavior: "smooth" });
@@ -226,14 +219,14 @@ a.li-nuxt-link {
 }
 
 .primary-button {
-  @apply btn btn-block bg-bilkov-prime hover:bg-bilkov-cviat-hover border-0 font-bold text-white rounded-full;
+  @apply btn btn-block bg-herb-prime hover:bg-herb-hover border-0 font-bold text-white rounded-full;
 }
 .secondary-button {
-  @apply btn btn-block bg-white hover:bg-bilkov-prime hover:text-white text-bilkov-prime rounded-full p-3 border-bilkov-prime border-2 border-solid;
+  @apply btn btn-block bg-white hover:bg-herb-prime hover:text-white text-herb-prime rounded-full p-3 border-herb-prime border-2 border-solid;
 }
 .slick-slider > .slick-prev::before,
 .slick-slider > .slick-next::before {
-  @apply text-bilkov-prime text-5xl md:text-6xl;
+  @apply text-herb-prime text-5xl md:text-6xl;
 }
 .slick-slider > .slick-next {
   @apply w-[50px] h-[50px] z-10 right-3;
@@ -258,18 +251,18 @@ a.li-nuxt-link {
   @apply pb-2 transition-transform duration-300;
 }
 .li-nuxt-link::after {
-  @apply content-[''] block w-0 h-[2px] transition-[width_0.5s] bg-bilkov-prime;
+  @apply content-[''] block w-0 h-[2px] transition-[width_0.5s] bg-herb-prime;
 }
 
 .li-nuxt-link:hover::after {
   @apply w-full;
 }
 li > a.nuxt-link-exact-active {
-  @apply text-bilkov-prime;
+  @apply text-herb-prime;
 }
 
 .nav-icons > a.nuxt-link-exact-active {
-  @apply bg-bilkov-prime;
+  @apply bg-herb-prime;
 }
 .nav-icons > a.nuxt-link-exact-active > img {
   @apply invert;

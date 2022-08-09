@@ -39,9 +39,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     // '@nuxtjs/tailwindcss',
   ],
-  router: {
-    middleware: "breadcrumbs",
-  },
+  router: {},
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 

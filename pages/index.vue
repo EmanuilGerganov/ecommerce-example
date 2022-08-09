@@ -17,12 +17,12 @@
       <div class="order-first items-center lg:order-last min-h-[540px] text-lg">
         <div class="text-left">
           <h2
-            class="text-2xl text-center my-10 font-bold styled pb-4 relative uppercase heading text-bilkov-prime"
+            class="text-2xl text-center my-10 font-bold styled pb-4 relative uppercase heading text-herb-prime"
           >
             100% HEADING TITLE TWO
           </h2>
           <p class="p-1 mb-6">
-            <span class="font-bold text-bilkov-prime">
+            <span class="font-bold text-herb-prime">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </span>
             Tempora, omnis ratione in laudantium maxime ipsum, facilis
@@ -31,7 +31,7 @@
           </p>
           <p class="p-1 mb-6">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <span class="font-bold text-bilkov-prime"
+            <span class="font-bold text-herb-prime"
               >Tempora, omnis ratione in laudantium maxime ipsum,</span
             >
             facilis blanditiis quod laboriosam labore aut! Voluptatem ea
@@ -41,7 +41,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
             omnis ratione in laudantium maxime ipsum, facilis blanditiis quod
             laboriosam labore aut!
-            <span class="font-bold text-bilkov-prime"
+            <span class="font-bold text-herb-prime"
               >Voluptatem ea similique molestias voluptas consectetur cumque
               optio nisi.</span
             >
@@ -53,28 +53,28 @@
 
     <div id="content">
       <section
-        v-if="bestSellingProducts"
+        v-if="products"
         id="products"
         class="space-y-5 sm:space-y-10 py-5 text-center"
       >
         <h3 class="heading">BEST SELLING PRODUCTS</h3>
         <div class="text-center grid lg:grid-cols-3 gap-5 justify-center">
           <LazyProductsCard
-            v-for="product in bestSellingProducts"
+            v-for="product in products"
             :key="product.id"
             :product="product"
             type-of-loading="lazy"
           />
         </div>
         <UIBasicButton link-destination="/products/">
-         All Products
+          All Products
         </UIBasicButton>
       </section>
       <LazyStamps id="stamps" class="w-full bg-section-blue py-5" />
       <section id="video" class="py-5">
         <h3 class="heading">
           HEADING THREE<br />
-         Example lazy youtube video component.
+          Example lazy youtube video component.
         </h3>
         <YoutubeVideo class="mx-auto w-full" />
       </section>
@@ -113,7 +113,7 @@
         >
           <div class="space-y-10 text-center">
             <div class="p-5 lg:p-0 prose prose-lg md:prose-xl text-left">
-              Eкипът на bilkovtinkturi.bg и
+              Eкипът на herbtinkturi.bg и
               <a class="text-pink-700" href="https://irisolog.bg/">
                 Кабинет Ирисова диагностика
               </a>
@@ -126,13 +126,13 @@
             </UIBasicButton>
             <!-- <nuxt-link
               to="/partniori"
-              class="mx-auto mt-3 btn bg-white font-bold border-solid border-2 border-bilkov-prime text-bilkov-prime hover:text-white hover:bg-bilkov-prime rounded-full"
+              class="mx-auto mt-3 btn bg-white font-bold border-solid border-2 border-herb-prime text-herb-prime hover:text-white hover:bg-herb-prime rounded-full"
             >
 
             </nuxt-link> -->
             <!-- <nuxt-link
                 to="/partniori"
-                class="btn flex mx-auto bg-bilkov-prime hover:bg-bilkov-cviat-hover border-0 font-bold text-white rounded-full"
+                class="btn flex mx-auto bg-herb-prime hover:bg-herb-hover border-0 font-bold text-white rounded-full"
               >
                 СТАНИ НАШ ПАРТНЬОР
               </nuxt-link> -->
@@ -209,20 +209,16 @@ export default {
         {
           hid: "og:url",
           name: "og:url",
-          content: "https://bilkovitinkturi.bg",
+          content: "https://herbitinkturi.bg",
         },
       ],
     };
-  },
-  async fetch() {
-    await this.$store.dispatch("actFetchBestSelling");
-    await this.$store.dispatch("actFetchLastArticles");
   },
   computed: {
     ...mapState({
       homeCategories: (state) => state.homeCategories,
       lastArticles: (state) => state.lastArticles,
-      bestSellingProducts: (state) => state.bestSellingProducts,
+      products: (state) => state.products.slice(-3),
     }),
   },
   // backgroundStyles() {

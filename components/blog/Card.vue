@@ -38,7 +38,7 @@
       <nuxt-link
         data-cy="read-more"
         :to="`/blog/${article.slug}/`"
-        class="bg-bilkov-prime hover:bg-bilkov-cviat-hover p-3 text-white font-medium"
+        class="bg-herb-prime hover:bg-herb-hover p-3 text-white font-medium"
       >
         Read more
       </nuxt-link>

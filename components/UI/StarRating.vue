@@ -9,7 +9,7 @@
     >
       <svg
         class="block h-5 w-5"
-        :class="[value >= i ? 'text-bilkov-prime' : 'text-gray-100']"
+        :class="[value >= i ? 'text-herb-prime' : 'text-gray-100']"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"

@@ -12,7 +12,7 @@
         <div class="w-full h-auto">
           <nuxt-link
             to="/products/"
-            class="text-white px-6 py-1.5 rounded-full shadow-lg bg-gradient-to-r from-bilkov-prime "
+            class="text-white px-6 py-1.5 rounded-full shadow-lg bg-gradient-to-r from-herb-prime "
           >
             <span class="font-bold h-6 w-48">Call to action</span>
           </nuxt-link>

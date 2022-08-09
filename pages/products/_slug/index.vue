@@ -1,19 +1,10 @@
 <template>
   <main>
-    {{ product }}
     <div id="product-page-layout">
       <header id="product">
         <div
           class="grid my-5 mx-auto text-lg font-semibold uppercase sm:text-base md:grid-cols-2 md:items-center md:text-left"
         >
-          <template v-if="$fetchState.pending">
-            <content-placeholders
-              :rounded="true"
-              class="mx-auto w-[350px] h-[350px]"
-            >
-              <content-placeholders-img />
-            </content-placeholders>
-          </template>
           <template>
             <img
               height="350"
@@ -28,36 +19,25 @@
           </template>
           <div class="flex flex-col gap-2 px-10">
             <h1 class="text-2xl font-bold text-black">
-              <template v-if="$fetchState.pending">
-                <content-placeholders :rounded="true">
-                  <content-placeholders-heading
-                    style="width: 350px; height: 50px; margin: auto"
-                  />
-                </content-placeholders>
-              </template>
-              <template v-else>
-                {{ product.title }}
-              </template>
+              {{ product.title }}
             </h1>
             <UIStarRating v-model="rating" />
             <div class="font-normal text-md">Code: 00000001</div>
             <div class="font-medium text-md">
               Single Price:
               {{
-                $fetchState.pending
-                  ? "-------"
-                  : product.price.toLocaleString("en-US", {
-                      style: "currency",
-                      currency: "EUR",
-                    })
+                product.price.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "EUR",
+                })
               }}
             </div>
             <div class="text-lg">Quantity</div>
             <div
-              class="self-start rounded-[60px] border-[1px] border-solid btn-group border-bilkov-prime"
+              class="self-start rounded-[60px] border-[1px] border-solid btn-group border-herb-prime"
             >
               <button
-                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
+                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-herb-prime hover:text-white hover:bg-herb-hover"
                 @click="() => removeCount()"
               >
                 -
@@ -68,7 +48,7 @@
                 {{ productCount }}
               </div>
               <button
-                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-bilkov-prime hover:text-white hover:bg-bilkov-cviat-hover"
+                class="w-16 h-16 bg-transparent rounded-[60px] border-0 btn text-herb-prime hover:text-white hover:bg-herb-hover"
                 @click="() => addCount()"
               >
                 +
@@ -78,7 +58,7 @@
             <!-- <div class="text-lg">TOTAL PRICE:{{ priceTotalMessage }}</div> -->
             <button
               data-cy="add"
-              class="font-bold text-white rounded-full border-0 btn bg-bilkov-prime hover:bg-bilkov-cviat-hover"
+              class="font-bold text-white rounded-full border-0 btn bg-herb-prime hover:bg-herb-hover"
               @click="() => addToCart(product)"
             >
               <ShoppingCart class="mr-2 w-7 h-7" />
@@ -149,7 +129,16 @@
 <script>
 import { mapState } from "vuex";
 export default {
+  created() {
+    this.product = this.$store.state.products.find(
+      (product) => product.slug == this.$route.params.slug
+    );
+  },
   data: () => ({
+    product: {
+      title: "",
+      price: 0,
+    },
     productCount: 1,
     rating: 5,
     questions: [
@@ -161,9 +150,6 @@ export default {
     answerExample:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi perspiciatis maxime eligendi error corporis aperiam repudiandae ex eveniet, numquam quisquam distinctio nesciunt facilis possimus enim repellendus tempore eaque facere.",
   }),
-  async fetch() {
-    await this.$store.dispatch("actFetchProducts");
-  },
   methods: {
     addToCart() {
       const product = {
@@ -172,6 +158,8 @@ export default {
         quantity: this.productCount,
       };
       this.$store.commit("cart/ADD_PRODUCT", product);
+      this.$store.commit("cart/TOGGLE_MODAL", true);
+      this.$store.commit("cart/SET_MODAL_DATA", { ...product });
     },
     removeCount() {
       this.productCount--;
@@ -184,11 +172,6 @@ export default {
     ...mapState({
       products: (state) => state.products,
     }),
-    product() {
-      return this.products.find(
-        (product) => product.slug == this.$route.params.slug
-      );
-    },
   },
 };
 </script>

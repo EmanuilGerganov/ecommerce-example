@@ -22,9 +22,9 @@ module.exports = {
       },
       colors: {
         black: "#403739",
-        "bilkov-cviat-hover": "#94DA22",
-        "bilkov-dark-press": "#337400",
-        "bilkov-prime": "#408000",
+        "herb-hover": "#94DA22",
+        "herb-dark-press": "#337400",
+        "herb-prime": "#408000",
         stepper: "#e4f1f9",
         green: "#408000",
         "section-blue": "#F6FBFF",

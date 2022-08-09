@@ -1,13 +1,11 @@
 export const state = () => ({
   navbar: false,
-  modal: false,
   // for whole page
   categoriesNames: null,
   breadcrumbs: [],
-  productAddMessage: {},
   // for index
   homeCategories: null,
-  lastArticles: null,
+  // lastArticles: null,
   bestSellingProducts: null,
 
   // for products
@@ -30,9 +28,7 @@ export const mutations = {
     if (payload) state.navbar = payload;
     else state.navbar = false;
   },
-  TOGGLE_MODAL(state, payload = false) {
-    state.modal = payload;
-  },
+
   SET_BREADCRUMBS(state, payload) {
     state.breadcrumbs = payload;
   },
@@ -63,9 +59,9 @@ export const mutations = {
   SET_PRODUCT_ADD_MESSAGE(state, payload) {
     state.productAddMessage = payload;
   },
-  SET_LAST_ARTICLES(state, payload) {
-    state.lastArticles = payload;
-  },
+  // SET_LAST_ARTICLES(state, payload) {
+  //   state.lastArticles = payload;
+  // },
   SET_HOME_CATEGORIES(state, payload) {
     state.homeCategories = payload;
   },
@@ -80,8 +76,14 @@ export const actions = {
   // const channel = "default-customer";
   async nuxtServerInit(storeContext, context) {
     const { commit } = storeContext;
+    const productsResponse = await fetch(
+      "https://raw.githubusercontent.com/EmanuilGerganov/ecommerce-example/main/eccomerce-mock.json"
+    );
+    const response = await productsResponse.json();
+    console.log(response.products);
+    commit("SET_PRODS", response.products);
 
-    storeContext.dispatch("actFetchLastArticles");
+    // storeContext.dispatch("actFetchLastArticles");
 
     // const payload = context.$cookies.get('cart') || {}
     // console.log(payload, 'COOKIE CART')
@@ -89,27 +91,21 @@ export const actions = {
     // commit('cart/SET_CART_FROM_COOKIE', payload)
     // await dispatch('actSetCartFromCookie', payload)
   },
-  async actFetchProducts({ commit }) {
-    const productsResponse = await fetch(
-      "https://api.storerestapi.com/products"
-    );
-    const products = await productsResponse.json();
-    commit("SET_PRODS", products.data);
-  },
-  async actFetchBestSelling({ commit }) {
-    const bestSellingResponse = await fetch(
-      "https://api.storerestapi.com/products?limit=3"
-    );
-    const products = await bestSellingResponse.json();
-    commit("SET_BEST_SELLING", products.data);
-  },
-  async actFetchLastArticles({ commit }) {
-    const lastArticlesResponse = await fetch(
-      "https://jsonplaceholder.typicode.com/posts?_sort=id:desc&_limit=3"
-    );
-    const lastArticles = await lastArticlesResponse.json();
-    commit("SET_LAST_ARTICLES", lastArticles);
-  },
+  // async actFetchProducts({ commit }) {
+  //   const productsResponse = await fetch(
+  //     "https://emanuilgerganov.github.io/eccomerce-mock.json"
+  //   );
+  //   const response = await productsResponse.json();
+  //   console.log(response.products)
+  //   commit("SET_PRODS", response.products);
+  // },
+  // async actFetchLastArticles({ commit }) {
+  //   const lastArticlesResponse = await fetch(
+  //     "https://jsonplaceholder.typicode.com/posts?_sort=id:desc&_limit=3"
+  //   );
+  //   const lastArticles = await lastArticlesResponse.json();
+  //   commit("SET_LAST_ARTICLES", lastArticles);
+  // },
   async actFetchCurrentArticle({ commit }, slug) {
     const response = await this.$strapi.find(
       "articles",
@@ -168,61 +164,5 @@ export const actions = {
     );
 
     await commit("SET_HOME_CATEGORIES", categoriesResponse.collections.edges);
-  },
-  async actFetchCurrentProduct({ commit }, payload) {
-    const query = gql`
-      query product($slug: String) {
-        product(slug: $slug, channel: "default-customer") {
-          id
-          name
-          slug
-          media {
-            url
-          }
-          collections {
-            name
-            id
-          }
-          variants {
-            sku
-            id
-            name
-          }
-          attributes {
-            attribute {
-              name
-            }
-            values {
-              name
-            }
-          }
-          seoTitle
-          seoDescription
-          pricing {
-            priceRangeUndiscounted {
-              start {
-                gross {
-                  amount
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
-    const variables = { slug: payload };
-    const product = await this.$graphql.default.request(query, variables);
-    // if (product.product === null) console.log('here')
-
-    commit("SET_CURRENT_PRODUCT", product.product);
-    commit("SET_BREADCRUMBS", [
-      { title: "PRODUCTS", to: "/products" },
-      { title: product.product.name, to: `/products/${payload}` },
-    ]);
-    return await this.$strapi
-      .find("products", { slug: payload })
-      .then((tabResponse) => {
-        commit("SET_PRODUCT_TABS", tabResponse);
-      });
   },
 };

@@ -21,9 +21,6 @@
 import { mapState } from "vuex";
 export default {
   name: "BlogHomePage",
-  async fetch() {
-    await this.$store.dispatch("actFetchArticles");
-  },
   computed: {
     ...mapState(["articles"]),
   },

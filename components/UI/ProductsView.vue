@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="flex text-lg sm:text-2xl my-5 sm:my-10 justify-center items-center">
+    <div
+      class="flex text-lg sm:text-2xl my-5 sm:my-10 justify-center items-center"
+    >
       <input
         ref="input"
         v-model="search"
@@ -9,11 +11,13 @@
         placeholder="Find a product"
       />
     </div>
-    <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <template v-if="$fetchState.pending">
+    <div
+      class="grid gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <!-- <template v-if="$fetchState.pending">
         <ProductsSkeleton v-for="n in 8" :key="n" />
-      </template>
-      <template v-else>
+      </template> -->
+      <template>
         <ProductsCard
           v-for="(product, index) in filteredProductList"
           :key="product.id"
@@ -25,20 +29,25 @@
   </div>
 </template>
 <script>
-import { defineComponent, ref, computed, useStore } from '@nuxtjs/composition-api'
-import { onStartTyping } from '@vueuse/core'
+import {
+  defineComponent,
+  ref,
+  computed,
+  useStore,
+} from "@nuxtjs/composition-api";
+import { onStartTyping } from "@vueuse/core";
 
 export default defineComponent({
-  props: ['$fetchState'],
+  // props: ['$fetchState'],
   setup() {
-    const store = useStore()
+    const store = useStore();
 
-    const input = ref(null)
+    const input = ref(null);
     // const {
     //   actions: { toggleSidebar },
     // } = useNavigation()
 
-    const products = computed(() => store.state.products)
+    const products = computed(() => store.state.products);
 
     // debouncedWatch(
     //   search,
@@ -49,43 +58,45 @@ export default defineComponent({
     // );
 
     onStartTyping(() => {
-      if (!input.value.active) input.value.focus()
-      store.commit('TOGGLE_NAVBAR', false)
-    })
+      if (!input.value.active) input.value.focus();
+      store.commit("TOGGLE_NAVBAR", false);
+    });
 
-    store.commit('SET_BREADCRUMBS', [{ title: 'PRODUCTS', to: '/products/' }])
+    store.commit("SET_BREADCRUMBS", [{ title: "PRODUCTS", to: "/products/" }]);
     return {
       input,
       products,
-    }
+    };
   },
   data() {
     return {
-      search: '',
-      query: '',
-    }
+      search: "",
+      query: "",
+    };
   },
   computed: {
     filteredProductList() {
       return this.products
         ? this.products.filter((prod) =>
-            JSON.stringify(prod).toLowerCase().includes(this.query.toLowerCase())
+            JSON.stringify(prod)
+              .toLowerCase()
+              .includes(this.query.toLowerCase())
           )
-        : []
+        : [];
     },
     activeSidebar() {
-      return this.$store.state.navbar
+      return this.$store.state.navbar;
     },
   },
   watch: {
     search(newValue) {
-      this.query = newValue
+      this.query = newValue;
     },
   },
   methods: {
     toggleSidebar(value) {
-      this.$store.commit('TOGGLE_NAVBAR', value)
+      this.$store.commit("TOGGLE_NAVBAR", value);
     },
   },
-})
+});
 </script>

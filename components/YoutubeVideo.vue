@@ -28,16 +28,6 @@
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     ></iframe>
-    <!-- <iframe
-      v-else
-      height="360px"
-      class="w-screen"
-      src="https://www.youtube.com/embed/SNK7sZ-9xNc?start=1"
-      frameborder="0"
-      allowfullscreen
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      title="Example video title"
-    /> -->
   </div>
 </template>
 

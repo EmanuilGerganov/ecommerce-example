@@ -76,7 +76,7 @@
         />
         <button
           type="submit"
-          class="btn btn-block text-white border-0 bg-bilkov-prime hover:bg-bilkov-cviat-hover mt-3"
+          class="btn btn-block text-white border-0 bg-herb-prime hover:bg-herb-hover mt-3"
         >
           SEND
         </button>
@@ -126,7 +126,7 @@ export default {
       {
         hid: 'og:url',
         name: 'og:url',
-        content: 'https://bilkovitinkturi.bg/contacts/',
+        content: 'https://herbitinkturi.bg/contacts/',
       },
     ],
   },
@@ -139,7 +139,7 @@ export default {
         ${this.message}`,
       }
       this.$http
-        .post('https://bilkovitinkturi.bg/admin/jobs/email', params)
+        .post('https://herbitinkturi.bg/admin/jobs/email', params)
         .then((response) => {
           console.log(response.status === 200)
           this.firstName = ''

@@ -12,17 +12,25 @@
       />
     </nuxt-link>
     <div data-cy="product-card-info" class="mt-3 mx-auto">
-      <div data-cy="product-card-name" class="md:line-clamp-1 font-bold text-xl mb-2 uppercase">
+      <div
+        data-cy="product-card-name"
+        class="md:line-clamp-1 font-bold text-xl mb-2 uppercase"
+      >
         {{ product.title }}
       </div>
       <span data-cy="product-card-price" class="text-lg">
-        {{ product.price.toLocaleString('en-US', {style: 'currency', currency: 'EUR'}) }}
+        {{
+          product.price.toLocaleString("en-US", {
+            style: "currency",
+            currency: "EUR",
+          })
+        }}
       </span>
     </div>
 
     <button
-      @click="() => addToCart(product)"
-      class="btn mt-5 border-0 peer text-white font-bold bg-bilkov-prime hover:bg-bilkov-cviat-hover rounded-full"
+      @click="() => addToCart()"
+      class="btn mt-5 border-0 peer text-white font-bold bg-herb-prime hover:bg-herb-hover rounded-full"
     >
       <CartOutline class="mr-2" />
       ADD
@@ -50,21 +58,16 @@ export default defineComponent({
       default: "lazy",
     },
   },
-  //   methods: {
-  //     async addToCart(product) {
-  //       const item = { ...product };
-  //       await this.$store.dispatch("cart/addProductToCart", { product: item });
-  //       const message = {
-  //         product: product,
-  //         productName: product.node.name,
-  //         productImageUrl: product.node.media[0].url,
-  //         productPrice:
-  //           product.node.pricing.priceRangeUndiscounted.start.gross.amount,
-  //         productQuantity: 1,
-  //       };
-  //       this.$store.commit("SET_PRODUCT_ADD_MESSAGE", message);
-  //       this.$store.commit("TOGGLE_MODAL", true);
-  //     },
-  //   },
+  methods: {
+    addToCart() {
+      const product = {
+        ...this.product,
+        quantity: 1,
+      };
+      this.$store.commit("cart/ADD_PRODUCT", product);
+      this.$store.commit("cart/SET_MODAL_DATA", product);
+      this.$store.commit("cart/TOGGLE_MODAL", true);
+    },
+  },
 });
 </script>
