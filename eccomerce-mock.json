@@ -11,7 +11,7 @@
          "id":2,
          "title":"Product Two Example",
          "slug":"second-product",
-         
+         "description":"this is description 2",
          "price":50
       },
       {

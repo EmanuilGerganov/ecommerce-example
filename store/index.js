@@ -59,9 +59,6 @@ export const mutations = {
   SET_PRODUCT_ADD_MESSAGE(state, payload) {
     state.productAddMessage = payload;
   },
-  // SET_LAST_ARTICLES(state, payload) {
-  //   state.lastArticles = payload;
-  // },
   SET_HOME_CATEGORIES(state, payload) {
     state.homeCategories = payload;
   },
@@ -82,87 +79,11 @@ export const actions = {
     const response = await productsResponse.json();
     console.log(response.products);
     commit("SET_PRODS", response.products);
-
-    // storeContext.dispatch("actFetchLastArticles");
-
-    // const payload = context.$cookies.get('cart') || {}
-    // console.log(payload, 'COOKIE CART')
-    // context.cart = payload
-    // commit('cart/SET_CART_FROM_COOKIE', payload)
-    // await dispatch('actSetCartFromCookie', payload)
-  },
-  // async actFetchProducts({ commit }) {
-  //   const productsResponse = await fetch(
-  //     "https://emanuilgerganov.github.io/eccomerce-mock.json"
-  //   );
-  //   const response = await productsResponse.json();
-  //   console.log(response.products)
-  //   commit("SET_PRODS", response.products);
-  // },
-  // async actFetchLastArticles({ commit }) {
-  //   const lastArticlesResponse = await fetch(
-  //     "https://jsonplaceholder.typicode.com/posts?_sort=id:desc&_limit=3"
-  //   );
-  //   const lastArticles = await lastArticlesResponse.json();
-  //   commit("SET_LAST_ARTICLES", lastArticles);
-  // },
-  async actFetchCurrentArticle({ commit }, slug) {
-    const response = await this.$strapi.find(
-      "articles",
-      {
-        slug,
-      },
-      ["_limit", 1]
-    );
-    const article = response[0];
-    commit("SET_CURRENT_ARTICLE", article);
-    commit("SET_BREADCRUMBS", [
-      { title: "BLOG", to: "/blog" },
-      { title: article.title, to: `/blog/${article.slug}` },
-    ]);
-    return this.$strapi
-      .find(
-        "articles",
-        {
-          slug: slug,
-        },
-        ["_limit", 1]
-      )
-      .then((article) => {
-        commit("SET_CURRENT_ARTICLE", article[0]);
-        return article[0];
-      });
   },
   async actFetchArticles({ commit }) {
     // https://fakestoreapi.com/products
     const articlesResponse = await fetch("https://dummyjson.com/posts");
     const articles = await articlesResponse.json();
     commit("SET_ARTICLES", articles.posts);
-  },
-  async actFetchHomeCategories({ commit }) {
-    const query = gql`
-      query ($channel: String!) {
-        collections(first: 4, channel: $channel) {
-          edges {
-            cursor
-            node {
-              id
-              name
-              slug
-              backgroundImage {
-                url
-              }
-            }
-          }
-        }
-      }
-    `;
-    const variables = { channel: "default-customer" };
-    const categoriesResponse = await this.$graphql.default.request(
-      query,
-      variables
-    );
-
-    await commit("SET_HOME_CATEGORIES", categoriesResponse.collections.edges);
   },
 };
