@@ -5,10 +5,10 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head\
   target: "static",
   router: {
-    base: '/eccomerce-example/'
+    base: '/ecommerce-example/'
   },
   head: {
-    title: "eccomerce-example",
+    title: "ecommerce-example",
     htmlAttrs: {
       lang: "en",
     },
