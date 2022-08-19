@@ -7,9 +7,8 @@
           {{ article.title }}
         </h1>
       </header>
-      <article class="
-     p-2 prose sm:prose-lg max-w-screen-xl text-left">
-        <div v-for="i in 5" class="" v-html="createHeadingTags(i+1)" />
+      <article class="p-5 prose sm:prose-lg max-w-screen-xl text-left">
+        <div v-for="i in 5" class="" v-html="createHeadingTags(i + 1)" />
       </article>
     </template>
   </main>
@@ -20,16 +19,19 @@ export default {
   name: "BlogArticle",
   async fetch() {
     await this.$store.dispatch("actFetchArticles");
+    this.article = this.$store.state.articles.find(
+      (blogArticle) => blogArticle.slug === this.$route.params.slug
+    );
     // const article = this.$store.state.articles.find(
     //   (article) => article.slug === this.$route.params.slug
     // );
     // return article;
   },
   data: () => ({
-    // article: {
-    //   title: "",
-    //   description: "",
-    // },
+    article: {
+      title: "",
+      description: "",
+    },
   }),
   methods: {
     createHeadingTags(index) {
@@ -89,14 +91,14 @@ export default {
   //     }
   //   }
   // },
-  computed: {
-    article() {
-      const article = this.$store.state.articles.find(
-        (blogArticle) => blogArticle.slug === this.$route.params.slug
-      );
-      return article;
-    },
-  },
+  // computed: {
+  //   article() {
+  //     const article = this.$store.state.articles.find(
+  //       (blogArticle) => blogArticle.slug === this.$route.params.slug
+  //     );
+  //     return article;
+  //   },
+  // },
   // jsonld() {
   //   const blogPost = this.article;
   //   return {
