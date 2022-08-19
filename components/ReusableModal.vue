@@ -1,7 +1,7 @@
 <template>
   <div class="modal modal-open">
     <div id="theModal" ref="target" class="modal-box max-h-screen p-2">
-       <div class="flex justify-end m-1">
+      <div class="flex justify-end m-1">
         <button
           data-cy="toggle-modal"
           class="btn-sm btn btn-outline btn-circle hover:fill-white"
@@ -64,7 +64,7 @@
             Go to cart
           </nuxt-link>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </template>
@@ -79,17 +79,18 @@ const target = ref(null);
 const quantity = ref(1);
 const store = useStore();
 
-onClickOutside(target, () => store.commit("cart/TOGGLE_MODAL", false));
+const toggleModal = () => store.commit("cart/TOGGLE_MODAL", false);
+
+onClickOutside(target, () => toggleModal);
 onKeyStroke("Escape", (e) => {
   e.preventDefault();
-  store.commit("TOGGLE_MODAL", false);
+  toggleModal();
 });
 
 const increaseQuantity = () => quantity++;
 const decreaseQuantity = () => quantity--;
-const toggleModal = () => store.commit("cart/TOGGLE_MODAL", false);
 const totalPrice = store.state.cart.totalPrice;
 const totalQuantity = store.state.cart.totalQuantity;
 const product = store.state.cart.modalData;
-console.log(product,'MODAL');
+console.log(product, "MODAL");
 </script>

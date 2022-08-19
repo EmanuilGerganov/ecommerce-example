@@ -235,7 +235,7 @@ a.li-nuxt-link {
   @apply w-[50px] h-[50px] z-10 left-3;
 }
 .heading {
-  @apply text-2xl text-center my-10 styled font-bold pb-4 relative uppercase;
+  @apply text-4xl text-center my-10 styled font-bold pb-4 relative uppercase;
 }
 .leaf-button {
   @apply flex items-center justify-center justify-items-center mb-5 hover:skew-x-12;

@@ -2,7 +2,7 @@
   <article data-cy="article" class="mx-auto w-4/5">
     <div class="">
       <div class="mb-3">
-        <nuxt-link :to="`/blog/${articleUrl}/`">
+        <nuxt-link :to="`/blog/${article.slug}/`">
           <img
             width="500"
             height="333"
@@ -62,11 +62,6 @@ export default {
       type: String,
       required: false,
       default: "lazy",
-    },
-  },
-  computed: {
-    articleUrl() {
-      return this.article.title.toLowerCase().replaceAll(" ", "-");
     },
   },
    // computed: {

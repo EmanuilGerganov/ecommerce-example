@@ -82,8 +82,10 @@ export const actions = {
   },
   async actFetchArticles({ commit }) {
     // https://fakestoreapi.com/products
-    const articlesResponse = await fetch("https://dummyjson.com/posts");
+    const articlesResponse = await fetch(
+      "https://raw.githubusercontent.com/EmanuilGerganov/ecommerce-example/main/blog-articles-mock.json"
+    );
     const articles = await articlesResponse.json();
-    commit("SET_ARTICLES", articles.posts);
+    commit("SET_ARTICLES", articles.articles);
   },
 };

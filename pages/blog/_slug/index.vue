@@ -1,32 +1,15 @@
 <template>
   <main id="main" class="lg:max-w-screen-xl mx-auto pt-10 mb-20">
-    <template v-if="$fetchState.pending">
-      <header>
-        <h1 class="heading">
-          <content-placeholders :rounded="true">
-            <h1><content-placeholders-heading style="height: 48px" /></h1>
-          </content-placeholders>
-        </h1>
-      </header>
-      <content-placeholders :rounded="true">
-        <content-placeholders-text :lines="20" />
-        <content-placeholders-img />
-        <content-placeholders-text :lines="20" />
-        <content-placeholders-img />
-        <content-placeholders-text :lines="20" />
-      </content-placeholders>
-    </template>
-    <template v-else-if="$fetchState.error">
-      <h1>Post #{{ $route.params.slug }} not found</h1>
-    </template>
+    <template v-if="$fetchState.pending"> PENDING</template>
     <template v-else>
       <header>
         <h1 class="heading">
-          {{ slug }}
+          {{ article.title }}
         </h1>
       </header>
-      <article class="p-2 prose max-w-none text-left">
-        {{ article.body }}
+      <article class="
+     p-2 prose sm:prose-lg max-w-screen-xl text-left">
+        <div v-for="i in 5" class="" v-html="createHeadingTags(i+1)" />
       </article>
     </template>
   </main>
@@ -37,6 +20,34 @@ export default {
   name: "BlogArticle",
   async fetch() {
     await this.$store.dispatch("actFetchArticles");
+    // const article = this.$store.state.articles.find(
+    //   (article) => article.slug === this.$route.params.slug
+    // );
+    // return article;
+  },
+  data: () => ({
+    // article: {
+    //   title: "",
+    //   description: "",
+    // },
+  }),
+  methods: {
+    createHeadingTags(index) {
+      const heading = `<h${index} class="text-center">Heading for article Number ${index}</h${index}>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime eum
+          quidem explicabimgo beatae, dolorem deserunt rem laboriosam voluptas
+          excepturi voluptatem libero? Molestiae ipsam temporibus doloribus.
+          Expedita ullam quidem consequatur suscipit.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime eum
+          quidem explicabimgo beatae, dolorem deserunt rem laboriosam voluptas
+          excepturi voluptatem libero? Molestiae ipsam temporibus doloribus.
+          Expedita ullam quidem consequatur suscipit.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime eum
+          quidem explicabimgo beatae, dolorem deserunt rem laboriosam voluptas
+          excepturi voluptatem libero? Molestiae ipsam temporibus doloribus.
+          Expedita ullam quidem consequatur suscipit.</p>
+        <img height="900" width="1200" src="/blog${index}.jpg" alt="" />`;
+
+      return heading;
+    },
   },
   // head() {
   //   if (!this.article) return false
@@ -79,54 +90,49 @@ export default {
   //   }
   // },
   computed: {
-    slug() {
-      // no slug - fix it after going back from /blog/article
-      console.log(this.$route.params.slug);
-      return this.$route.params.slug.replaceAll("-", " ");
-    },
     article() {
       const article = this.$store.state.articles.find(
-        (article) => article.title.toLowerCase() == this.slug
+        (blogArticle) => blogArticle.slug === this.$route.params.slug
       );
       return article;
     },
   },
-  jsonld() {
-    const blogPost = this.article;
-    return {
-      "@context": "http://schema.org",
-      "@graph": [
-        {
-          "@type": "BlogPosting",
-          headline: blogPost.title,
-          alternativeHeadline: blogPost.description,
-          image: blogPost.image?.url,
-          genre:
-            "билки билкови тинктури хомеопатия билколечение алтернативна медицина",
-          keywords: "билки здраве билколечение билкови тинктури",
-          // wordcount: words.length,
-          publisher: {
-            "@type": "Organization",
-            name: "herbitinkturi.bg",
-            url: "https://herbitinkturi.bg/",
-          },
-          author: {
-            "@type": "Person",
-            name: "herbitinkturi.bg",
-            url: "https://herbitinkturi.bg/",
-          },
-          url: "https://herbitinkturi.bg/blog/" + blogPost.slug,
-          datePublished: blogPost.publishedAt,
-          dateCreated: blogPost.created_at,
-          dateModified: blogPost.updated_at,
-          description: blogPost.description,
-          inLanguage: "bg-Cyrl-Bulgaria",
-          isFamilyFriendly: true,
-          copyrightYear: new Date().getFullYear(),
-          mainEntityOfPage: true,
-        },
-      ],
-    };
-  },
+  // jsonld() {
+  //   const blogPost = this.article;
+  //   return {
+  //     "@context": "http://schema.org",
+  //     "@graph": [
+  //       {
+  //         "@type": "BlogPosting",
+  //         headline: blogPost.title,
+  //         alternativeHeadline: blogPost.description,
+  //         image: blogPost.image?.url,
+  //         genre:
+  //           "билки билкови тинктури хомеопатия билколечение алтернативна медицина",
+  //         keywords: "билки здраве билколечение билкови тинктури",
+  //         // wordcount: words.length,
+  //         publisher: {
+  //           "@type": "Organization",
+  //           name: "herbitinkturi.bg",
+  //           url: "https://herbitinkturi.bg/",
+  //         },
+  //         author: {
+  //           "@type": "Person",
+  //           name: "herbitinkturi.bg",
+  //           url: "https://herbitinkturi.bg/",
+  //         },
+  //         url: "https://herbitinkturi.bg/blog/" + blogPost.slug,
+  //         datePublished: blogPost.publishedAt,
+  //         dateCreated: blogPost.created_at,
+  //         dateModified: blogPost.updated_at,
+  //         description: blogPost.description,
+  //         inLanguage: "bg-Cyrl-Bulgaria",
+  //         isFamilyFriendly: true,
+  //         copyrightYear: new Date().getFullYear(),
+  //         mainEntityOfPage: true,
+  //       },
+  //     ],
+  //   };
+  // },
 };
 </script>
