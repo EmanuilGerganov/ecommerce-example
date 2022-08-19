@@ -4,6 +4,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head\
   target: "static",
+  router: {
+    base: '/eccomerce-example/'
+  },
   head: {
     title: "eccomerce-example",
     htmlAttrs: {
@@ -40,7 +43,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     // '@nuxtjs/tailwindcss',
   ],
-  router: {},
+  
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
 
