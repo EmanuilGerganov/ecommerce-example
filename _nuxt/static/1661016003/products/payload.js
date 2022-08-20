@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/products", {data:[{}],fetch:{},mutations:[["SET_BREADCRUMBS",[{title:"PRODUCTS",to:"\u002Fproducts\u002F"}]]]});
