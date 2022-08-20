@@ -17,7 +17,7 @@
           height="350"
           class="mx-auto"
           :title="product.name"
-          src="/oil.jpg"
+          src="/ecommerce-example/oil.jpg"
           alt="Added to cart product image"
         />
         <span

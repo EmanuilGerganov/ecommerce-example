@@ -26,7 +26,7 @@
 </script>
 <style>
 .the-hero {
-  @apply bg-[url('/tea.jpg')] 
+  @apply bg-[url('/ecommerce-example/tea.jpg')] 
   
 
 }

@@ -12,7 +12,7 @@
         <!-- <InformationOutline/> -->
         <!-- <svg-icon :name="icons[index]" height="40" width="40" /> -->
 
-        <!-- <nuxt-img format="webp" :src="`/svg/${icons[index]}.svg`"></nuxt-img> -->
+        <!-- <nuxt-img format="webp" :src="/ecommerce-example`/svg/${icons[index]}.svg`"></nuxt-img> -->
 
         <span class="xl:text-xl font-semibold col-span-3">
           {{ tabs[index] }}
@@ -52,10 +52,10 @@ const isMobile = breakpoints.smaller("lg");
 const tabs = ["INFO", "HOW TO USE", "INGREDIENTS", "RECOMMENDED FOR"];
 const tabIndex = ref(0);
 const tabImages = [
-  "/usage.jpg",
-  "/how-to.jpg",
-  "/ingredients.jpg",
-  "/recommend.webp",
+  "/ecommerce-example/usage.jpg",
+  "/ecommerce-example/how-to.jpg",
+  "/ecommerce-example/ingredients.jpg",
+  "/ecommerce-example/recommend.webp",
 ];
 const icons = [
   "InformationOutline",

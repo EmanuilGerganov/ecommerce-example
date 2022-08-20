@@ -10,7 +10,7 @@
         loading="lazy"
         width="640"
         height="360"
-        src="/sddefault.jpg"
+        src="/ecommerce-example/sddefault.jpg"
         alt="Youtube video example"
         title="Example video title"
       />
@@ -22,7 +22,7 @@
       v-else
       width="560"
       height="315"
-      src="https://www.youtube.com/embed/IUN664s7N-c"
+      src="/ecommerce-examplehttps://www.youtube.com/embed/IUN664s7N-c"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

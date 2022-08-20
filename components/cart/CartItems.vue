@@ -9,7 +9,7 @@
       <nuxt-link :to="`/products/${product.slug}/`" class="w-[100px] h-[100px]">
         <img
           loading="lazy"
-          src="/oil.jpg"
+          src="/ecommerce-example/oil.jpg"
           :alt="product.title + ' example.com'"
         />
       </nuxt-link>
