@@ -8,7 +8,7 @@
             height="333"
             :loading="typeOfLoading"
             :title="article.title"
-            src="ecommerce-example/article-image.jpg"
+            src="/article-image.jpg"
             class="h-auto"
             :alt="article.title"
           />

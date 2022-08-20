@@ -3,7 +3,7 @@
     <img
       width="125"
       height="150"
-      src="ecommerce-example/logo-nobg.png"
+      src="/logo-nobg.png"
       title="Our logo"
       alt="Company logo"
       format="webp"

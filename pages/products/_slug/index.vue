@@ -11,7 +11,7 @@
               width="350"
               preload
               class="mx-auto"
-              src="ecommerce-example/oil.jpg"
+              src="/oil.jpg"
               :title="product.title"
               alt="Снимка на продукт"
               loading="eager"

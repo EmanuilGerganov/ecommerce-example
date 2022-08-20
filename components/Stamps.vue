@@ -4,23 +4,23 @@
     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-xl"
   >
     <UIFeatureStamp
-      image="ecommerce-example/packs2.svg"
+      image="/packs2.svg"
       heading="Delivery"
       :w="142"
     >
       Lorem ipsum dolor sit amet
     </UIFeatureStamp>
     <UIFeatureStamp
-      image="ecommerce-example/service.svg"
+      image="/service.svg"
       heading="Service"
       :w="110"
     >
       Lorem ipsum dolor
     </UIFeatureStamp>
-    <UIFeatureStamp image="ecommerce-example/truck.svg" heading="Transport">
+    <UIFeatureStamp image="/truck.svg" heading="Transport">
       Lorem ipsum dolor sit amet
     </UIFeatureStamp>
-    <UIFeatureStamp image="ecommerce-example/list.svg" heading="Tasks">
+    <UIFeatureStamp image="/list.svg" heading="Tasks">
       Lorem ipsum dolor sit
     </UIFeatureStamp>
   </div>

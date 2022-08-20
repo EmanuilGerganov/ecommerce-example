@@ -36,7 +36,7 @@
               loading="eager"
               title="ТЕРИС ЛОГО"
               alt="Лого"
-              src="ecommerce-example/logo4.png"
+              src="/logo4.png"
               class="h-[64px] sm:h-auto"
             />
           </nuxt-link>
@@ -75,7 +75,7 @@
                 loading="eager"
                 width="24"
                 height="24"
-                src="ecommerce-example/svg/account-circle.svg"
+                src="/svg/account-circle.svg"
                 title="Влез в профил"
                 alt="Профил"
               />

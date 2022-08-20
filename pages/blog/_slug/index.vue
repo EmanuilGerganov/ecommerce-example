@@ -46,7 +46,7 @@ export default {
           quidem explicabimgo beatae, dolorem deserunt rem laboriosam voluptas
           excepturi voluptatem libero? Molestiae ipsam temporibus doloribus.
           Expedita ullam quidem consequatur suscipit.</p>
-        <img height="900" width="1200" src="ecommerce-example/blog${index}.jpg" alt="" />`;
+        <img height="900" width="1200" src="/blog${index}.jpg" alt="" />`;
 
       return heading;
     },
