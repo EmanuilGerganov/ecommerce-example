@@ -7,7 +7,7 @@
       width="172"
       height="172"
       class="mb-10"
-      src="/cart.png"
+      src="ecommerce-example/cart.png"
       sizes="lg:172px"
       title="Your cart is empty"
       alt="empty cart"

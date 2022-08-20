@@ -29,7 +29,7 @@
             height="156"
             loading="lazy"
             :title="article.title"
-            src="/article-image.jpg"
+            src="ecommerce-example/article-image.jpg"
             :alt="article.title + '- example.com'"
           />
           <div>

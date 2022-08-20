@@ -7,7 +7,7 @@
         width="350"
         class="mx-auto h-[20rem] w-[20rem] duration-700 transform hover:scale-110"
         :title="product.title"
-        src="/oil.jpg"
+        src="ecommerce-example/oil.jpg"
         :alt="product.title + ' example.com'"
       />
     </nuxt-link>
