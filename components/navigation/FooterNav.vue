@@ -1,8 +1,8 @@
 <template>
   <div class="bg-footer-bg foot">
     <div id="nav">
-      <nav class="flex flex-col gap-3 text-lg font-semibold uppercase">
-        <UIHomeLogo />
+      <nav class="flex flex-col gap-1 text-lg font-semibold uppercase">
+        <UIHomeLogo class="my-0" />
         <nuxt-link to="/about/"> About us </nuxt-link>
         <nuxt-link to="/products/"> Products</nuxt-link>
         <nuxt-link to="/contacts/"> Contact us </nuxt-link>
@@ -10,17 +10,13 @@
       </nav>
     </div>
     <div id="foot-blog">
-      <article
-        v-for="article in articles"
-        :key="article.id"
-        class="p-3 sm:pb-3"
-      >
+      <article class="p-3 sm:p-1" v-for="article in articles" :key="article.id">
         <nuxt-link
           :to="`/blog/${article.slug}/`"
           class="grid gap-2 sm:grid-cols-2 md:grid-cols-[250px_500px]"
         >
           <img
-            class="mx-auto rounded-md"
+            class="sm:mx-auto rounded-md"
             width="234"
             height="156"
             loading="lazy"
@@ -29,7 +25,7 @@
             :alt="article.title + '- example.com'"
           />
           <div>
-            <h4 class="text-lg font-semibold uppercase mt-4">
+            <h4 class="text-lg font-semibold uppercase">
               {{ article.title }}
             </h4>
             <p class="pt-5">

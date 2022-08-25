@@ -1,13 +1,12 @@
 <template>
   <main id="main" class="lg:max-w-screen-xl mx-auto pt-10 mb-20">
-    <template v-if="$fetchState.pending"> PENDING</template>
-    <template v-else>
+    <template>
       <header>
         <h1 class="heading">
           {{ article.title }}
         </h1>
       </header>
-      <article class="p-5 prose sm:prose-lg max-w-screen-xl text-left">
+      <article class="p-5 m-auto prose sm:prose-lg max-w-screen-xl text-left">
         <div v-for="i in 5" class="" v-html="createHeadingTags(i + 1)" />
       </article>
     </template>
@@ -16,16 +15,10 @@
 
 <script>
 export default {
-  name: "BlogArticle",
   async fetch() {
-    await this.$store.dispatch("actFetchArticles");
     this.article = this.$store.state.articles.find(
       (blogArticle) => blogArticle.slug === this.$route.params.slug
     );
-    // const article = this.$store.state.articles.find(
-    //   (article) => article.slug === this.$route.params.slug
-    // );
-    // return article;
   },
   data: () => ({
     article: {

@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/blog/article-6", {data:[{}],fetch:{"BlogArticle:0":{article:{id:6,title:"Sixth Article Heading",slug:"article-6",description:"Article description and content information 6"}}},mutations:[]});
