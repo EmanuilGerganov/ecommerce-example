@@ -14,7 +14,6 @@
       <UIHeaderLink icon="view-grid" to="/products/"> Products </UIHeaderLink>
       <UIHeaderLink icon="account-group" to="/about/"> About us </UIHeaderLink>
       <UIHeaderLink icon="book-open-page-variant" to="/blog/"> Blog </UIHeaderLink>
-      <UIHeaderLink icon="hand-heart" to="/partniori/"> Партньори </UIHeaderLink>
       <UIHeaderLink icon="contacts" to="/contacts/"> Contacts </UIHeaderLink>
     </aside>
   </div>

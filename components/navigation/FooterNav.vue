@@ -5,7 +5,6 @@
         <UIHomeLogo />
         <nuxt-link to="/about/"> About us </nuxt-link>
         <nuxt-link to="/products/"> Products</nuxt-link>
-        <nuxt-link to="/kategorii/"> Категории </nuxt-link>
         <nuxt-link to="/contacts/"> Contact us </nuxt-link>
         <nuxt-link to="/blog/"> Blog </nuxt-link>
       </nav>
@@ -60,7 +59,9 @@
           <Email class="mr-2" />
           example@gmail.com
         </span>
-        <h2 class="font-bold uppercase text-center my-10">Follow us on social media</h2>
+        <h2 class="font-bold uppercase text-center my-10">
+          Follow us on social media
+        </h2>
         <div class="flex justify-around">
           <a
             title="Facebook"
@@ -132,14 +133,10 @@ export default {
     PhoneOutline,
     Email,
   },
-  // mounted() {
-  //   fetch("https://jsonplaceholder.typicode.com/todos/1")
-  //     .then((response) => response.json())
-  //     .then((json) => console.log(json));
-  // },
+
   computed: {
     ...mapState({
-      articles: (state) => state?.lastArticles?.slice(0, 2),
+      articles: (state) => state.articles.slice(0, 2),
     }),
   },
 };

@@ -31,13 +31,12 @@
           <nuxt-link to="/" class="my-2">
             <img
               data-cy="nav-logo"
-              width="140"
-              height="70"
+              width="105"
+              height="35"
               loading="eager"
-              title="ТЕРИС ЛОГО"
-              alt="Лого"
-              src="/ecommerce-example/logo4.png"
-              class="h-[64px] sm:h-auto"
+              title="Company Logo"
+              alt="Logo"
+              src="/ecommerce-example/company-logo.png"
             />
           </nuxt-link>
         </div>
@@ -66,22 +65,6 @@
           </li>
         </ul>
         <div class="flex gap-1">
-          <!-- <nuxt-link :to="isLoggedIn ? '/profil/' : '/vpisvane/'" class="nav-icon h-10 w-10">
-            <template v-if="isLoggedIn"> {{ isLoggedIn.email.slice(0, 2) }} </template>
-            <template v-else>
-              <nuxt-picture legacyFormat="webp"
-                format="avif"
-
-                loading="eager"
-                width="24"
-                height="24"
-                src="/ecommerce-example/svg/account-circle.svg"
-                title="Влез в профил"
-                alt="Профил"
-              />
-            </template>
-          </nuxt-link> -->
-
           <a
             href="tel:0888777999"
             aria-label="Call us"

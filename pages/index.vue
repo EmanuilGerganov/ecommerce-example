@@ -78,26 +78,13 @@
         </h3>
         <YoutubeVideo class="mx-auto w-full" />
       </section>
-      <!-- <section id="categories" class="py-5 justify-center text-center">
-        <h3 class="heading">КАТЕГОРИИ</h3>
-        <div class="flex flex-wrap gap-5 justify-center mt-5">
-          <CategoryCard
-            v-for="category in homeCategories"
-            :key="category.curosor"
-            :category="category"
-            :f-state="$fetchState"
-            class="p-5 sm:p-0"
-          />
-        </div>
-        <UIBasicButton link-destination="/kategorii/"> Виж ВСИЧКИ КАТЕГОРИИ </UIBasicButton>
-      </section> -->
       <section id="blog" class="py-5 justify-center text-center">
         <h3 class="heading">Latest posts</h3>
         <div
           class="grid gap-7 lg:grid-cols-3 py-4 mt-5 overflow-hidden md:container md:mx-auto text-left"
         >
           <BlogCard
-            v-for="article in lastArticles"
+            v-for="article in articles"
             :key="article.slug"
             :article="article"
             type-of-loading="lazy"
@@ -105,50 +92,6 @@
           />
         </div>
         <UIBasicButton link-destination="/blog/"> ALL ARTICLES </UIBasicButton>
-      </section>
-      <section id="partners" class="bg-section-blue py-5 w-full">
-        <h3 class="heading">Partners</h3>
-        <div
-          class="flex flex-wrap-reverse justify-center justify-items-center gap-10 md:gap-28"
-        >
-          <div class="space-y-10 text-center">
-            <div class="p-5 lg:p-0 prose prose-lg md:prose-xl text-left">
-              Eкипът на herbtinkturi.bg и
-              <a class="text-pink-700" href="https://irisolog.bg/">
-                Кабинет Ирисова диагностика
-              </a>
-              разширяват структурата и процеса си на работа, така че да бъдем
-              максимално ползотворни в мисията си към здравето на нашите
-              пациенти.
-            </div>
-            <UIBasicButton link-destination="/partniori/">
-              СТАНИ НАШ ПАРТНЬОР
-            </UIBasicButton>
-            <!-- <nuxt-link
-              to="/partniori"
-              class="mx-auto mt-3 btn bg-white font-bold border-solid border-2 border-herb-prime text-herb-prime hover:text-white hover:bg-herb-prime rounded-full"
-            >
-
-            </nuxt-link> -->
-            <!-- <nuxt-link
-                to="/partniori"
-                class="btn flex mx-auto bg-herb-prime hover:bg-herb-hover border-0 font-bold text-white rounded-full"
-              >
-                СТАНИ НАШ ПАРТНЬОР
-              </nuxt-link> -->
-          </div>
-          <img
-            data-cy="partners-image"
-            class="mx-auto lg:m-0 grid-row"
-            width="640"
-            height="414"
-            loading="lazy"
-            src="/ecommerce-example/partniori.webp"
-            alt="Parthners"
-            title="Партньори"
-            sizes="xs:360px md:640px"
-          />
-        </div>
       </section>
       <LazyEmailBulletin id="bulletin" />
     </div>
@@ -166,13 +109,6 @@ export default {
     // YoutubeVideo: () => import('~/components/YoutubeVideo.vue'),
     // EmailBulletin: () => import('~/components/EmailBulletin.vue'),
   },
-
-  // async fetch() {
-  //   // await this.$store.dispatch('actFetchBestSelling')
-  //   // await this.$store.dispatch('actFetchHomeCategories')
-  //   const lart = await this.$store.dispatch('actFetchLastArticles')
-  //   this.lastArticles = lart
-  // },
   head() {
     return {
       link: [
@@ -187,7 +123,7 @@ export default {
           hid: "description",
           name: "description",
           content:
-            "Специално подбрана комбинация от билки. Чисти билкови екстракти.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consequatur corporis modi nemo commodi possimus rem voluptatem?",
         },
         {
           hid: "og:type",
@@ -197,27 +133,25 @@ export default {
         {
           hid: "og:title",
           name: "og:title",
-          content:
-            "Билкови тинктури Специално подбрана комбинация от билки. Чисти билкови екстракти.",
+          content: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         },
         {
           hid: "og:description",
           name: "og:description",
           content:
-            "Специално подбрана комбинация от билки. Чисти билкови екстракти.",
+            " Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consequatur corporis modi nemo commodi possimus rem voluptatem?",
         },
         {
           hid: "og:url",
           name: "og:url",
-          content: "https://herbitinkturi.bg",
+          content: "https://www.ecommerce-example.com",
         },
       ],
     };
   },
   computed: {
     ...mapState({
-      homeCategories: (state) => state.homeCategories,
-      lastArticles: (state) => state.lastArticles,
+      articles: (state) => state.articles.slice(-3),
       products: (state) => state.products.slice(-3),
     }),
   },
@@ -248,9 +182,7 @@ export default {
     ". products ."
     "stamps stamps stamps"
     "video video video"
-    ". categories ."
     ". blog ."
-    "partners partners partners"
     "bulletin bulletin bulletin";
   grid-template-columns: 1fr 90% 1fr;
   justify-items: center;
@@ -269,14 +201,8 @@ export default {
 #video {
   grid-area: video;
 }
-#categories {
-  grid-area: categories;
-}
 #blog {
   grid-area: blog;
-}
-#partners {
-  grid-area: partners;
 }
 #bulletin {
   grid-area: bulletin;
