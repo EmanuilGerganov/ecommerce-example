@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a class="skip-link" tabindex="0" href="#main">Към главното съдържание</a>
+    <a class="skip-link" tabindex="0" href="#main">Go to main content</a>
     <div class="default-layout h-screen">
       <NavigationNavbar class="layout-nav" />
       <div class="layout-main">
@@ -13,14 +13,6 @@
           <FooterNav />
 
           <div class="bg-herb-dark-press text-white">
-            <div
-              class="flex flex-wrap uppercase text-center py-3 sm:py-4 mx-auto justify-center items-center font-semibold gap-4"
-            >
-              <nuxt-link to="/pravila-i-usloviya/">HOW TO USE</nuxt-link>
-              <nuxt-link to="/pravila-za-poveritelnost/">SECURITY</nuxt-link>
-              <nuxt-link to="/gdpr/">GDPR</nuxt-link>
-              <nuxt-link to="/faq/">FAQ</nuxt-link>
-            </div>
             <div class="h-12 flex justify-center items-center normal-case">
               ©2022 All Rights Reserved.
             </div>
