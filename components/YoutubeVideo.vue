@@ -7,6 +7,7 @@
       @click="showVideo"
     >
       <img
+        class="m-auto"
         loading="lazy"
         width="640"
         height="360"
@@ -19,10 +20,11 @@
       </div>
     </div>
     <iframe
+    class="m-auto"
       v-else
-      width="560"
-      height="315"
-      src="/ecommerce-examplehttps://www.youtube.com/embed/IUN664s7N-c"
+      width="640"
+      height="360"
+      src="https://www.youtube.com/embed/IUN664s7N-c"
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

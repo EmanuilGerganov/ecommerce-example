@@ -10,9 +10,6 @@
       </nav>
     </div>
     <div id="foot-blog">
-      <h3 class="font-bold uppercase text-lg text-center mb-10">
-        Latest blog article
-      </h3>
       <article
         v-for="article in articles"
         :key="article.id"

@@ -76,8 +76,9 @@
           HEADING THREE<br />
           Example lazy youtube video component.
         </h3>
-        <YoutubeVideo class="mx-auto w-full" />
+        <YoutubeVideo/>
       </section>
+      <LazyEmailBulletin id="bulletin" />
       <section id="blog" class="py-5 justify-center text-center">
         <h3 class="heading">Latest posts</h3>
         <div
@@ -93,7 +94,6 @@
         </div>
         <UIBasicButton link-destination="/blog/"> ALL ARTICLES </UIBasicButton>
       </section>
-      <LazyEmailBulletin id="bulletin" />
     </div>
   </div>
 </template>
@@ -101,14 +101,6 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "HomePage",
-
-  components: {
-    // BlogCard: () => import('~/components/BlogCard.vue'),
-    // CategoryCard: () => import('~/components/CategoryCard.vue'),
-    // YoutubeVideo: () => import('~/components/YoutubeVideo.vue'),
-    // EmailBulletin: () => import('~/components/EmailBulletin.vue'),
-  },
   head() {
     return {
       link: [
@@ -182,8 +174,8 @@ export default {
     ". products ."
     "stamps stamps stamps"
     "video video video"
-    ". blog ."
-    "bulletin bulletin bulletin";
+    "bulletin bulletin bulletin"
+    ". blog .";
   grid-template-columns: 1fr 90% 1fr;
   justify-items: center;
   justify-content: center;
