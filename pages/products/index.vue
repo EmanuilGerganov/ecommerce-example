@@ -32,7 +32,7 @@ export default {
       {
         hid: "og:title",
         name: "og:title",
-        content: "【Lorem ipsum dolor sit amet — example.com",
+        content: "Lorem ipsum dolor sit amet — example.com",
       },
       {
         hid: "og:description",

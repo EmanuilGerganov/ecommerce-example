@@ -44,90 +44,40 @@ export default {
       return heading;
     },
   },
-  // head() {
-  //   if (!this.article) return false
-  //   else {
-  //     return {
-  //       title: title,
-  //       meta: [
-  //         {
-  //           hid: 'title',
-  //           name: 'title',
-  //           content: title,
-  //         },
-  //         {
-  //           hid: 'og:title',
-  //           name: 'og:title',
-  //           content: title,
-  //         },
-  //         {
-  //           hid: 'description',
-  //           name: 'description',
-  //           content: description,
-  //         },
-  //         {
-  //           hid: 'og:description',
-  //           name: 'og:description',
-  //           content: description,
-  //         },
-  //         {
-  //           hid: 'og:image',
-  //           name: 'og:image',
-  //           content: ogImageUrl,
-  //         },
-  //         {
-  //           hid: 'og:type',
-  //           name: 'og:type',
-  //           content: 'article',
-  //         },
-  //       ],
-  //     }
-  //   }
-  // },
-  // computed: {
-  //   article() {
-  //     const article = this.$store.state.articles.find(
-  //       (blogArticle) => blogArticle.slug === this.$route.params.slug
-  //     );
-  //     return article;
-  //   },
-  // },
-  // jsonld() {
-  //   const blogPost = this.article;
-  //   return {
-  //     "@context": "http://schema.org",
-  //     "@graph": [
-  //       {
-  //         "@type": "BlogPosting",
-  //         headline: blogPost.title,
-  //         alternativeHeadline: blogPost.description,
-  //         image: blogPost.image?.url,
-  //         genre:
-  //           "билки билкови тинктури хомеопатия билколечение алтернативна медицина",
-  //         keywords: "билки здраве билколечение билкови тинктури",
-  //         // wordcount: words.length,
-  //         publisher: {
-  //           "@type": "Organization",
-  //           name: "herbitinkturi.bg",
-  //           url: "https://herbitinkturi.bg/",
-  //         },
-  //         author: {
-  //           "@type": "Person",
-  //           name: "herbitinkturi.bg",
-  //           url: "https://herbitinkturi.bg/",
-  //         },
-  //         url: "https://herbitinkturi.bg/blog/" + blogPost.slug,
-  //         datePublished: blogPost.publishedAt,
-  //         dateCreated: blogPost.created_at,
-  //         dateModified: blogPost.updated_at,
-  //         description: blogPost.description,
-  //         inLanguage: "bg-Cyrl-Bulgaria",
-  //         isFamilyFriendly: true,
-  //         copyrightYear: new Date().getFullYear(),
-  //         mainEntityOfPage: true,
-  //       },
-  //     ],
-  //   };
-  // },
+  head() {
+    if (!this.article) return false;
+    else {
+      return {
+        title: this.article.title,
+        meta: [
+          {
+            hid: "title",
+            name: "title",
+            content: this.article.title,
+          },
+          {
+            hid: "og:title",
+            name: "og:title",
+            content: this.article.title,
+          },
+          {
+            hid: "description",
+            name: "description",
+            content: this.article.description,
+          },
+          {
+            hid: "og:description",
+            name: "og:description",
+            content: this.article.description,
+          },
+          {
+            hid: "og:type",
+            name: "og:type",
+            content: "article",
+          },
+        ],
+      };
+    }
+  },
 };
 </script>

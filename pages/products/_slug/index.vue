@@ -150,6 +150,38 @@ export default {
     answerExample:
       "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quasi perspiciatis maxime eligendi error corporis aperiam repudiandae ex eveniet, numquam quisquam distinctio nesciunt facilis possimus enim repellendus tempore eaque facere.",
   }),
+  head() {
+    return {
+      title: `${this.$route.params.slug} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea —  example.com `,
+      meta: [
+        {
+          hid: "description",
+          name: "description",
+          content: `${this.$route.params.slug} Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea  `,
+        },
+        {
+          hid: "og:type",
+          name: "og:type",
+          content: "website",
+        },
+        {
+          hid: "og:title",
+          name: "og:title",
+          content: `${this.$route.params.slug} Lorem ipsum dolor sit amet — example.com`,
+        },
+        {
+          hid: "og:description",
+          name: "og:description",
+          content: `${this.$route.params.slug} Description ipsum dolor sit amet consectetur adipisicing elit. Repudiandae atque ad eum itaque provident corrupti ea, asperiores rerum eveniet quisquam aliquam deserunt vitae totam vel`,
+        },
+        {
+          hid: "og:url",
+          name: "og:url",
+          content: "https://example.com/products",
+        },
+      ],
+    };
+  },
   methods: {
     addToCart() {
       const product = {

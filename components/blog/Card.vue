@@ -16,16 +16,8 @@
       </div>
 
       <span>
-        <!-- <Calendar class="inline-block" /> -->
-        <!-- <svg-icon class="inline-block" name="calendar-month" width="24px" height="24px" /> -->
-        <!-- <time> -->
         {{ articlePublishedDate }}
-        <!-- </time> -->
       </span>
-      <!-- <span class="float-right">
-        <svg-icon class="inline-block" name="clipboard-text-multiple" width="24px" height="24px" />
-        <time datetime="">{{ time }} минути</time>
-      </span> -->
 
       <h2
         class="line-clamp-1 text-xl sm:text-xl hover:text-indigo-600 transition duration-200 font-bold text-gray-900 mt-3"
@@ -64,26 +56,5 @@ export default {
       default: "lazy",
     },
   },
-   // computed: {
-  // articlePublishedDate() {
-  //   if (!this.article.publish_at) return ''
-  //   return this.article.publish_at.slice(0, 10)
-  // },
-  // src() {
-  //   let src = ''
-  //   if (this.article.image.formats.small?.url) {
-  //     src = this.$config.apiURL + this.article.image.formats.small.url
-  //   } else {
-  //     src = this.$config.apiURL + this.article.image.url
-  //   }
-  //   return src
-  // },
-  // },
-  // created() {
-  //   const regex = /(<([^>]+)>)/gi
-  //   const wordPerMinute = 225
-  //   const words = this.article.content.trim().replace(regex, '').split(/\s+/).length
-  //   this.time = Math.ceil(words / wordPerMinute)
-  // },
 };
 </script>
