@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-cover" :style="sectionBackground">
+  <section class="bg-cover w-full" :style="sectionBackground">
     <div
       class="grid md:grid-cols-2 items-center text-center gap-3 bg-[#2c4405] bg-opacity-60 bg-cover py-5 sm:p-10 md:p-5 h-full"
     >
@@ -26,7 +26,7 @@
             class="absolute top-0 right-0 btn bg-transparent rounded-full border-0"
             title="Send email"
           >
-          <Send class="fill-current text-herb-prime"></Send>
+            <Send class="fill-current text-herb-prime"></Send>
           </button>
         </div>
       </div>

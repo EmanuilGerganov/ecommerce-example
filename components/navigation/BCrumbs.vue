@@ -42,11 +42,9 @@ export default {
   computed: {
     crumbs() {
       const fullPath = this.$route.fullPath;
-      console.log(fullPath, "FULL PATH");
       const params = fullPath.startsWith("/")
         ? fullPath.substring(1).split("/").filter(Boolean)
         : fullPath.split("/").fitler(Boolean);
-      console.log(params, "PARAMS");
       const crumbs = [];
       let path = "";
       params.forEach((param, index) => {

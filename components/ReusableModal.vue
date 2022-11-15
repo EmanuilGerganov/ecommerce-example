@@ -87,10 +87,9 @@ onKeyStroke("Escape", (e) => {
   toggleModal();
 });
 
-const increaseQuantity = () => quantity++;
-const decreaseQuantity = () => quantity--;
+// const increaseQuantity = () => quantity++;
+// const decreaseQuantity = () => quantity--;
 const totalPrice = store.state.cart.totalPrice;
 const totalQuantity = store.state.cart.totalQuantity;
 const product = store.state.cart.modalData;
-console.log(product, "MODAL");
 </script>

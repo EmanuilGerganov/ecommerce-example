@@ -2,23 +2,19 @@
   <div>
     <a class="skip-link" tabindex="0" href="#main">Go to main content</a>
     <div class="default-layout h-screen">
-      <NavigationNavbar class="layout-nav" />
+      <NavigationNavbar class="layout-nav h-full" />
       <div class="layout-main">
         <NavigationBCrumbs
           v-if="$route.path !== '/'"
           class="max-w-[1570px] my-5"
         />
         <Nuxt keep-alive />
-        <footer class="layout-footer">
-          <FooterNav />
-
-          <div class="bg-herb-dark-press text-white">
-            <div class="h-12 flex justify-center items-center normal-case">
-              ©2022 All Rights Reserved.
-            </div>
-          </div>
-        </footer>
       </div>
+      <footer class="layout-footer">
+        <FooterNav />
+
+      
+      </footer>
 
       <ReusableModal v-if="isModalOpen" />
     </div>
@@ -170,6 +166,7 @@ iframe {
   max-width: 100%;
 }
 .default-layout {
+  min-height: 100vh;
   display: grid;
   grid-template-areas:
     "nav"

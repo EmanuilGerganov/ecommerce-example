@@ -105,7 +105,6 @@ export default {
   },
   methods: {
     removeProduct(product) {
-      console.log(product);
       this.$store.commit("cart/REMOVE_PRODUCT", product);
     },
     increaseQuantity(product) {

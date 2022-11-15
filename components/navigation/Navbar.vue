@@ -1,7 +1,7 @@
 <template>
-  <div class="main-navigation">
+  <div>
     <div
-      class="z-30 navbar bg-white/70 shadow-md fixed top-0 h-16 lg:h-24 w-screen myBlur"
+      class="z-30 navbar bg-white/70 shadow-md fixed top-0 h-[70px] lg:h-24 w-screen myBlur"
     >
       <div
         class="px-3 flex justify-between items-center lg:max-w-[1570px] w-full mx-auto whitespace-nowrap"
